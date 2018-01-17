@@ -1,0 +1,72 @@
+
+.single .speechy_mp3 {
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px dotted #ddd;
+	background: #FFF;
+}
+
+.single .speechy_mp3 span {
+	font-weight: bold;
+}
+
+.single .speechy_mp3 .mejs-container {
+	margin-bottom: 0 !important;
+}
+.single .speechy_mp3 .download_link {
+	text-align: right;
+	padding: 0;
+	font-size: 0.8em;
+}
+
+.single .fixed_up {
+	position: fixed;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    width: 100%;
+	padding: 0;
+    border: 0 !important;
+}
+
+.single .fixed_wpadminbar {
+	top: 32px;
+}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+
+.remove {
+	display: none !important;
+}
+
+.mejs-container {
+	width: 100% !important;
+}
+
+@media only screen and (max-width: 767px){
+	.single .speechy_mp3 {
+		padding: 0;
+		margin: 0;
+		max-height: 90px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+	
+	.single .speechy_mp3 span {
+		
+	}
+
+	.single .speechy_mp3 .powered_by {
+		margin: 0 10px 0 0;
+	}
+}
+

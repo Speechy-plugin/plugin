@@ -1,0 +1,157 @@
+.wrap.speechy {
+	max-width: 1170px;
+	clear: both;
+}
+
+.wrap.speechy h2 {
+	font-size: 1.7em;
+}
+
+.wrap.speechy h3 {
+	font-size: 1.4em;
+}
+
+.wrap.speechy h4 {
+	font-size: 1.2em;
+}
+
+.wrap.speechy ul li {
+	list-style-type: circle;
+	margin: 0 0 0 20px;
+}
+   
+#speechy_licence_form {
+		
+}
+	
+#speechy_licence_form label {
+	display: block;
+	margin: 10px 0
+}
+	
+#speechy_id_key, #speechy_secret_key {
+	width: 600px;
+}
+	
+#speechy-update-information td h4 {
+	display: none;
+}
+
+.speechy_block_left {
+	width: 70%;
+	float: left;
+}
+
+.speechy_block_right {
+	width: 28%;
+	float: left;
+	margin: 0 0 0 15px;
+}
+
+.speechy_block_how_to,
+.speechy_block_contact_me {
+	margin: 0 0 20px 0;
+	border-bottom: 1px solid gray;
+}
+
+.speechy_block_how_to {
+	
+}
+
+.speechy_block_contact_me {
+	
+}
+
+.speechy_block_how_to h4 {
+	margin: 0;
+}
+
+.speechy_block_how_to p {
+	margin-top: 0;
+}
+
+.table, 
+.table th, 
+.table td {
+	border: 1px solid #000;
+}
+
+.table th,
+.table td {
+	padding: 10px;
+}
+
+.limit_notice, #updated-msg p {
+    max-width: 100%;
+    text-align: center;
+    margin: 10px 0;
+	font-size: 16px;
+}
+
+.none {
+	
+}
+
+.orange {
+	color: orange;
+}
+
+.red {
+	color: red;
+}
+
+.limit_notice.orange {
+	border: 1px solid orange;
+}
+
+.limit_notice.red {
+	border: 1px solid red;
+}
+
+#updated-msg p {
+	border: 1px solid green;
+	color: green;
+	display: block;
+}
+
+#speechy_player_settings {
+	
+}
+
+#speechy_player_settings  label {
+    display: block;
+	margin: 10px 0;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+/* boxes in post */
+
+#speechy-post-class label {
+	font-weight: 700;
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+/* ** Responsive ** */
+
+@media only screen and (max-device-width : 1268px) {
+	#speechy_id_key, #speechy_secret_key {
+		width: 100%;
+	}
+	
+	.speechy_block_left,
+	.speechy_block_right	{
+		width: 50%;
+	}
+}
+
+@media only screen and (max-device-width : 768px) {
+	
+	.speechy_block_left,
+	.speechy_block_right	{
+		width: 100%;
+		float: none;
+	}
+
+}
