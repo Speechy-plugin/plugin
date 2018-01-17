@@ -1,11 +1,13 @@
 === Speechy ===
 Contributors: speechy, nicozz
-Stable tag: 1.0
-Tested up to: 4.9
+Tags: MP3, podcast
 Requires at least: 4.6
+Tested up to: 4.9
+Stable tag: 1.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create high-quality audio versions of your WordPress blog posts with Speechy.
-Start for free and upgrade as you grow!
+Create high-quality audio versions of your WordPress blog posts with Speechy. Start for free and upgrade as you grow!
 
 == Description ==
 
@@ -55,3 +57,24 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 	1) Adapt your content to audio version: on the post edit page, by default, Speechy will use your main content. But if you need to adapt your content to an audio version, inside the Speechy optional setting, you can change your post content. If this texte area is not empty, speechy will use its content to create the audio version.
 	2) Select a voice for a specific post: on the post edit page, inside the Speechy optional setting, you can also change the default voice using the drop down menu.
+
+	
+== Frequently Asked Questions ==
+	
+== Screenshots ==
+
+1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
+the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
+directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
+(or jpg, jpeg, gif).
+2. This is the second screen shot
+
+== Changelog ==
+
+= 1.0 =
+* A change since the previous version.
+* Another change.
+
+= 0.5 =
+* List versions from most recent at top to oldest at bottom.
+
