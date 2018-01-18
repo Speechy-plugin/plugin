@@ -135,17 +135,24 @@ class SpeechyAPi{
 		return $resp;
 	}
 	
-	public function createAudio($postId, $html, $voice = "Amy"){
+	public static function getPostIdFromRequest(){
+		if($_REQUEST['error'] == 0)
+			return $_REQUEST['post_id'];
+		return false;
+	}
+	
+	public function createAudio($postId, $html, $voice = "Amy", $callbackUrl = false){
 		$contentList = $this->processAudioToContent($html);
 		if(count($contentList) == 0) return false;
 		
 		$jsonArr = array(
 			"post_id" => $postId,
 			"contentlist" => $contentList,
-			"voice" => $voice
+			"voice" => $voice,
+			"callback_url" =>$callbackUrl
 		);
-		
-		$resp = $this->_callApi("create-audio", "post", $jsonArr);
+		if($callbackUrl !== false) $resp = $this->_callApi("create-audio-delayed", "post", $jsonArr);
+		else $resp = $this->_callApi("create-audio", "post", $jsonArr);
 		return $resp;
 	}
 	

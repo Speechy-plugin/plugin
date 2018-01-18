@@ -13,6 +13,18 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 
+/* Speechy Callback Handling */
+function speechy_callback($vars = '') {
+	if($vars['pagename'] == 'speechy_callback'){
+		$post_id = SpeechyAPi::getPostIdFromRequest();
+		update_post_meta( $post_id, 'mp3_ready', 1);
+		echo "done";
+		exit();
+	}
+	return $vars;
+}
+add_filter( 'request', 'speechy_callback' );
+
 /* Enqueue CSS and JS files */
 function speechy_scripts($hook) {
  

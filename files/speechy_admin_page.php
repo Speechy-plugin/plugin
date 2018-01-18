@@ -49,7 +49,7 @@ function speechy_options(){ ?>
 	
 	<h2 class="nav-tab-wrapper"> 
 		<a href="?page=speechy-plugin&tab=speechy_settings" class="nav-tab <?php echo $active_tab == 'speechy_settings' ? 'nav-tab-active' : ''; ?>">Speechy Settings</a>
-		
+		<a href="?page=speechy-plugin&tab=how_to" class="nav-tab <?php echo $active_tab == 'how_to' ? 'nav-tab-active' : ''; ?>">How to use Speechy</a>
 		<?php if(ID_KEY != ''){ ?>
 			<a href="?page=speechy-plugin&tab=player_settings" class="nav-tab <?php echo $active_tab == 'player_settings' ? 'nav-tab-active' : ''; ?>">MP3 Player Colors</a>
 			<a href="?page=speechy-plugin&tab=payments_history" class="nav-tab <?php echo $active_tab == 'payments_history' ? 'nav-tab-active' : ''; ?>">Payments Info</a>
@@ -75,13 +75,17 @@ function speechy_options(){ ?>
 			
 			<?php include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/speechy_contact_me.php' ); ?>
 			
+		<?php }elseif( $active_tab == 'how_to' ) { ?>
+			
+			<?php include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/speechy_how_to.php' ); ?>
+			
 		<?php } ?>
 	
 	</div> <!-- /speechy left -->
 	
 	<div class="speechy_block_right">
 		
-		<?php include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/speechy_how_to.php' ); ?>
+		<?php //include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/speechy_how_to.php' ); ?>
 
 	</div>
 </div>

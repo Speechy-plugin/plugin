@@ -4,11 +4,12 @@ function createSpeechyAudio( $post_id){
 	global $post_data;
 		
 	// Checking if user don't want to create an MP3.
-	$create_mp3_choice = $_REQUEST['speechy-get-checkbox'];
-	$checkbox_value = get_post_meta( $post_id, 'speechy-get-checkbox', true );
+	$create_mp3_choice = isset($_REQUEST['speechy-get-checkbox']) ? $_REQUEST['speechy-get-checkbox'] : "";
+	update_post_meta( $post_id, 'speechy-get-checkbox', $create_mp3_choice );
 	
-	if( $checkbox_value == "checked"){
+	if( $create_mp3_choice == "checked"){
 		// WE DON'T CREATE AN MP3 FILE.
+		update_post_meta( $post_id, 'mp3_ready', 0);
 		return;
 	}else{
 		// WE CREATE AN MP3 FILE.
@@ -37,20 +38,21 @@ function createSpeechyAudio( $post_id){
 			return; 
 		
 		// ** SpeechyAPi
-		
+		$callbackUrl = get_site_url()."/speechy_callback";
 		$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
-		$resp = $speechyApi->createAudio($post_id, $content, $voice);
+		$resp = $speechyApi->createAudio($post_id, $content, $voice, $callbackUrl);
 		
 		$is_success = $resp['error'] == 0; // if status is 200 then its a success response.
-		file_put_contents(get_home_path()."/tst.txt" ,$content."\n\n\n".print_r($resp, true));
+		//file_put_contents(get_home_path()."/tst.txt" ,$content."\n\n\n".print_r($resp, true));
 		if($is_success){
 			$mp3_url = $resp['data']['url']; // url is in data.
 			update_post_meta( $post_id, 'mp3_url', $mp3_url );
+			update_post_meta( $post_id, 'mp3_ready', 0);
 		}
 	}
 	
 }
-add_action('post_updated', 'createSpeechyAudio');
+add_action('publish_post', 'createSpeechyAudio');
 
 /* Success/error notice after post creation/update */
 
@@ -101,9 +103,12 @@ function speechy_mp3_ok() {
 }
 
 function speechy_mp3_error() {
+	global $post;
+	$getcheckbox = get_post_meta( $post->ID, 'speechy-get-checkbox', true );
+	$warningmessage = ($getcheckbox == "checked") ? "As required, the MP3 file has not been created." : "Oops! There was an error creating your MP3 file. Please check if you have reached your plan's limits in the <a href=".SETTING_PAGE_URL .">speechy Settings page</a>.";
   ?>
   <div class="notice notice-error is-dismissible">
-      <p><?php _e( "Oops! There was an error creating your MP3 file. Please check if you have reached your plan's limits in the <a href=".SETTING_PAGE_URL .">speechy Settings page</a>", "speechy" ); ?>.</p>
+      <p><?= $warningmessage; ?></p>
   </div>
   <?php
 }
