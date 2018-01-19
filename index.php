@@ -3,7 +3,7 @@
    Plugin Name: Speechy
    Plugin URI: https://speechy.io
    Description: Create and host on Amazon a MP3 on every post created.
-   Version: 1.0
+   Version: 0.5
    Author: Nicolas Point
    Author URI: https://speechy.io
    License: GPL2
@@ -25,6 +25,13 @@ function speechy_callback($vars = '') {
 }
 add_filter( 'request', 'speechy_callback' );
 
+/* ** github Updater ** */
+require_once( plugin_dir_path( __FILE__ ) . 'github/githubpluginupdater.php' );
+
+//require_once( 'BFIGitHubPluginUploader.php' );
+if ( is_admin() ) {
+    new WPFDGitHubPluginUpdater( __FILE__, 'Speechy-plugin', "plugin" );
+}
 /* Enqueue CSS and JS files */
 function speechy_scripts($hook) {
  
@@ -114,6 +121,7 @@ function my_plugin_action_links( $links ) {
    $links[] = '<a href="'. esc_url( get_admin_url(null, 'options-general.php?page=speechy-plugin') ) .'">'. __('Settings', 'speechy'). '</a>';
    return $links;
 }
+
 
 /* ** Speechy meta box (not sure to use the metabox or the shortcode) ** */
 include_once( plugin_dir_path( __FILE__ ) . '/files/speechy_metabox.php' );
