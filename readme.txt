@@ -55,3 +55,26 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 	1) Adapt your content to audio version: on the post edit page, by default, Speechy will use your main content. But if you need to adapt your content to an audio version, inside the Speechy optional setting, you can change your post content. If this texte area is not empty, speechy will use its content to create the audio version.
 	2) Select a voice for a specific post: on the post edit page, inside the Speechy optional setting, you can also change the default voice using the drop down menu.
+
+== Changelog ==
+
+= 0.9
+* Important change: MP3 files are now created in the background. When done, Amazon send back the response and the database is updated.
+* find mp3 file updated accordingly
+* Added download icon to the downlosd link
+* Payment info presented in a table
+* Added a "Need Help" section in the settings page
+* Create audio success message changed
+* readme.txt file content improved
+
+
+= 0.8.1 =
+* Added github uploader
+
+= 0.8 =
+* Added parsedown.php
+
+= 0.7 =
+* MP3 will be created by delayed process.
+* MP3 will only be created when post is created or updated. Not on draft
+* If checkbox is checked, MP3 will not be created.
