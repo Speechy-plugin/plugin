@@ -97,7 +97,7 @@ if($resp['error'] == 0){
 function speechy_mp3_ok() {
   ?>
   <div class="updated notice notice-success is-dismissible">
-      <p><?php _e( 'Success! Your MP3 file was created successfully!', 'speechy' ); ?></p>
+      <p><?php _e( 'We are currently converting your blog post into an MP3 file. It will soon be available on the page with your blog post.', 'speechy' ); ?></p>
   </div>
   <?php
 }

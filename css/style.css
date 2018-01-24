@@ -17,6 +17,10 @@
 	text-align: right;
 	padding: 0;
 	font-size: 0.8em;
+	background: url(../images/download-link.png);
+    background-position: 87% center;
+    background-size: 20px;
+    background-repeat: no-repeat;
 }
 
 .single .fixed_up {
@@ -67,6 +71,12 @@
 
 	.single .speechy_mp3 .powered_by {
 		margin: 0 10px 0 0;
+	}
+	
+	.single .speechy_mp3 .download_link {
+		text-align: right;
+		padding: 0;
+		font-size: 0.8em;
 	}
 }
 

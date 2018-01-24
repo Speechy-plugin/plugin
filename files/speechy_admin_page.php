@@ -84,9 +84,13 @@ function speechy_options(){ ?>
 	</div> <!-- /speechy left -->
 	
 	<div class="speechy_block_right">
+		<h4>Need help?</h4>
+		<ol>
+		<li>Look in the How To page <a href="?page=speechy-plugin&tab=how_to">here</a></li>
+		<li>Send us an email at <a href="mailto:help@speechy.io">help@speechy.io</a></li>
+		<li>Or use the chat box on <a href="https://speechy.io">speechy.io</a>. We will do our best to help you!</li>
+		</ol>
 		
-		<?php //include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/speechy_how_to.php' ); ?>
-
 	</div>
 </div>
 <?php }
