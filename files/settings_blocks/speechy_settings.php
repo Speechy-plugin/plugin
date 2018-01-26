@@ -119,7 +119,8 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	do_settings_sections( __FILE__ );
 	?>
 	<?php
-	if(!isset($options['speechy_id_key']) && $options['speechy_id_key'] == ''){
+	if(!isset($options['speechy_id_key']) || $options['speechy_id_key'] == ''){
+		
 	?>
 		<div class="notice notice-error">
 			<h3><?php echo __("Important: For Speechy to work properly, you need to enter the ID key and Secret key" , "speechy"); ?>.<br /><a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = messageupdate; });'><?php echo __("Sign up for a free plan here" , "speechy"); ?></a>.</h3>
@@ -136,6 +137,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	<label for="key"><?php echo __("Secret key" , "speechy"); ?></label>
 	<input type="text" id="speechy_secret_key" class="" name="speechy_settings[speechy_secret_key]" value="<?php echo (isset($options['speechy_secret_key']) && $options['speechy_secret_key'] != '') ? $options['speechy_secret_key'] : ''; ?>" placeholder="" />
 	
+<?php if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){ ?>
 	<br />
 	<h3><?php echo __("Voice/Language setting" , "speechy"); ?></h3>
 	<label for="speech_voice"><?php echo __("Change your favorite voice" , "speechy"); ?> (<?php echo __("You can later change it on the post edit page" , "speechy"); ?>)</label>
@@ -208,9 +210,21 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 		  </optgroup>
 
 	</select>
-        
+<?php } else { ?>
+		<h3>How to sign up with Speechy?</h3>
+		<p>To make speechy work properly, you need to:</p>
+		<ol>
+			<li>Create an account by <a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = messageupdate; });'><?php echo __("Sign up for a free plan here" , "speechy"); ?></a>. A popup will open. Click on the Sign up button and fill the form</li>
+			<li>After signing up, a confirmation email will be sent to your email adress. Open this email and click the confirmation link you will find inside.</li>
+			<li>Then, you can sign in through same the popup window you used to sign up.</li>
+			<li>After sign in, you will have access to your ID key and Secret key. Copy/paste those keys in your Speechy settings page (the two fields above).</li>
+			<li>Success! You are now registered for a free plan. If you reach the MP3 limits, you can upgrade to a pay plan if you want to.</li>
+		</ol>
+<?php } ?> 
 	<?php submit_button(); ?>
 </form>
 
-<h3><?php echo __("MP3 player colors" , "speechy"); ?></h3>
-<p><?php echo __("You can change the colors of the player" , "speechy"); ?> <a href="?page=speechy-plugin&tab=player_settings"><?php echo __("Here" , "speechy"); ?></a>.</p>
+<?php if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){ ?>
+	<h3><?php echo __("MP3 player colors" , "speechy"); ?></h3>
+	<p><?php echo __("You can change the colors of the player" , "speechy"); ?> <a href="?page=speechy-plugin&tab=player_settings"><?php echo __("Here" , "speechy"); ?></a>.</p>
+<?php } ?>

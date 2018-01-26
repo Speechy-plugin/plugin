@@ -86,10 +86,14 @@ function speechy_options(){ ?>
 	<div class="speechy_block_right">
 		<h4>Need help?</h4>
 		<ol>
-		<li>Look in the How To page <a href="?page=speechy-plugin&tab=how_to">here</a></li>
+		<li>Take a look at the How To page <a href="?page=speechy-plugin&tab=how_to">here</a></li>
 		<li>Send us an email at <a href="mailto:help@speechy.io">help@speechy.io</a></li>
-		<li>Or use the chat box on <a href="https://speechy.io">speechy.io</a>. We will do our best to help you!</li>
+		<li>Or use the chat box on <a href="https://speechy.io">speechy.io</a>.</li>
 		</ol>
+		
+		<p>We will do our best to help you!</p>
+		<p>Nicolas,<br />
+		Speechy founder.</p>
 		
 	</div>
 </div>

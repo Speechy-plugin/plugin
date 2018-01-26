@@ -88,7 +88,7 @@ define('SECRET_KEY', $speechy_secret_key); // secret_key will be here.
 
 // Voice setting
 $speechy_voice = $options['voice'];
-$speechy_voice != "" ? $speechy_voice : $speechy_voice = "Amy";
+$speechy_voice != "" ? $speechy_voice : $speechy_voice = "Joanna";
 
 define('VOICE', $speechy_voice);
 
