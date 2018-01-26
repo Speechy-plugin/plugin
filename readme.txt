@@ -58,14 +58,18 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
-= 0.9
+= 0.9.1 =
+* Explanation added to the settings page about how to sinup with Speechy.
+* Default voice changed from Amy to Johanna.
+
+= 0.9 =
 * Important change: MP3 files are now created in the background. When done, Amazon send back the response and the database is updated.
 * find mp3 file updated accordingly
 * Added download icon to the downlosd link
 * Payment info presented in a table
 * Added a "Need Help" section in the settings page
 * Create audio success message changed
-* readme.txt file content improved
+* readme.txt file content updated.
 
 
 = 0.8.1 =
