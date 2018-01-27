@@ -51,13 +51,14 @@ function speechy_options(){ ?>
 		<a href="?page=speechy-plugin&tab=speechy_settings" class="nav-tab <?php echo $active_tab == 'speechy_settings' ? 'nav-tab-active' : ''; ?>">Speechy Settings</a>
 		<a href="?page=speechy-plugin&tab=how_to" class="nav-tab <?php echo $active_tab == 'how_to' ? 'nav-tab-active' : ''; ?>">How to use Speechy</a>
 		<?php if(ID_KEY != ''){ ?>
+			<a href="?page=speechy-plugin&tab=voice_samples" class="nav-tab <?php echo $active_tab == 'voice_samples' ? 'nav-tab-active' : ''; ?>">voices samples</a>
 			<a href="?page=speechy-plugin&tab=player_settings" class="nav-tab <?php echo $active_tab == 'player_settings' ? 'nav-tab-active' : ''; ?>">MP3 Player Colors</a>
 			<a href="?page=speechy-plugin&tab=payments_history" class="nav-tab <?php echo $active_tab == 'payments_history' ? 'nav-tab-active' : ''; ?>">Payments Info</a>
 			<a href="?page=speechy-plugin&tab=contact" class="nav-tab <?php echo $active_tab == 'contact' ? 'nav-tab-active' : ''; ?>">Contact Me!</a>
 		<?php } ?>
 	</h2>
 	
-	<div class="speechy_block_left">
+	<div class="speechy_block_left seventy">
 	
 		<?php if( $active_tab == 'speechy_settings' ) { ?>
 		
@@ -79,22 +80,29 @@ function speechy_options(){ ?>
 			
 			<?php include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/speechy_how_to.php' ); ?>
 			
-		<?php } ?>
+		<?php }elseif( $active_tab == 'voice_samples' ) { ?>
+			
+			<?php include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/voice_samples.php' ); ?>
+			
+		<?php } ?> 
 	
 	</div> <!-- /speechy left -->
 	
-	<div class="speechy_block_right">
-		<h4>Need help?</h4>
-		<ol>
-		<li>Take a look at the How To page <a href="?page=speechy-plugin&tab=how_to">here</a></li>
-		<li>Send us an email at <a href="mailto:help@speechy.io">help@speechy.io</a></li>
-		<li>Or use the chat box on <a href="https://speechy.io">speechy.io</a>.</li>
-		</ol>
-		
-		<p>We will do our best to help you!</p>
-		<p>Nicolas,<br />
-		Speechy founder.</p>
-		
+	<div class="speechy_block_left thirty">
+		<?php if( $active_tab == 'speechy_settings' ) { ?>
+			<div class="help">
+				<h4>Need help?</h4>
+				<ol>
+				<li>Take a look at the How To page <a href="?page=speechy-plugin&tab=how_to">here</a></li>
+				<li>Send us an email at <a href="mailto:help@speechy.io">help@speechy.io</a></li>
+				<li>Or use the chat box on <a href="https://speechy.io">speechy.io</a>.</li>
+				</ol>
+				
+				<p>We will do our best to help you!</p>
+				<p>Nicolas,<br />
+				Speechy founder.</p>
+			</div>
+		<?php } ?>
 	</div>
 </div>
 <?php }

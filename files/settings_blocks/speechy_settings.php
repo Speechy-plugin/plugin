@@ -148,68 +148,72 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	//Voice list: http://docs.aws.amazon.com/polly/latest/dg/voicelist.html
 	// Doc: https://docs.aws.amazon.com/polly/latest/dg/API_Voice.html
 	?>
+	<h5>Tips: You can listen to all available voices <a href="?page=speechy-plugin&tab=voice_samples">here</a></h5>
 	<select name="speechy_settings[voice]">
-		<optgroup label="English (US) (en-US)">
-			<option value="Ivy" <?php if($voice== 'Ivy') { echo "SELECTED";} ?>>Ivy - Female - US</option>
-			<option value="Joanna" <?php if($voice== 'Joanna') { echo "SELECTED";} ?>>Joanna - Female - US</option>
-			<option value="Joey" <?php if($voice== 'Joey') { echo "SELECTED";} ?>>Joey - Male - US</option>
-			<option value="Kendra" <?php if($voice== 'Kendra') { echo "SELECTED";} ?>>Kendra - Female - US</option>
-			<option value="Kimberly" <?php if($voice== 'Kimberly') { echo "SELECTED";} ?>>Kimberly - Female - US</option>
-			<option value="Matthew" <?php if($voice== 'Matthew') { echo "SELECTED";} ?>>Matthew - Male - US</option>
-			<option value="Salli" <?php if($voice== 'Salli') { echo "SELECTED";} ?>>Salli - Female - US</option>
-		</optgroup>
-		<optgroup label="English (British) (en-GB)">
-			<option value="Amy" <?php if($voice== 'Amy') { echo "SELECTED";} ?>>Amy - Female - UK</option>
-			<option value="Brian" <?php if($voice== 'Brian') { echo "SELECTED";} ?>>Brian - Male - UK</option>
-			<option value="Emma" <?php if($voice== 'Emma') { echo "SELECTED";} ?>>Emma - Female - UK</option>
-		</optgroup>
-		  
-		  <optgroup label="Español (Castellano) (es-ES)">
-			<option value="Conchita" <?php if($voice== 'Conchita') { echo "SELECTED";} ?>>Conchita - Mujer - ES</option>
-			<option value="Enrique" <?php if($voice== 'Enrique') { echo "SELECTED";} ?>>Enrique - Hombre - ES</option>
-		  </optgroup>
-		  <optgroup label="Français (fr-FR)">
-			<option value="Celine" <?php if($voice== 'Celine') { echo "SELECTED";} ?>>Céline - Femme - FR</option>
-			<option value="Mathieu" <?php if($voice== 'Mathieu') { echo "SELECTED";} ?>>Mathieu - Homme - FR</option>
-		  </optgroup>
-		  <optgroup label="French (Canadian) (fr-CA))">
-			<option value="Chantal" <?php if($voice== 'Chantal') { echo "SELECTED";} ?>>Chantal - Femmme - fr-CA</option>
-		  </optgroup>
-		  <optgroup label="English (Australian) (en-AU)">
-			<option value="Nicole" <?php if($voice== 'Nicole') { echo "SELECTED";} ?>>Nicole - Female - en-AU</option>
-			<option value="Russell" <?php if($voice== 'Russell') { echo "SELECTED";} ?>>Russell - Male - en-AU</option>
-		  </optgroup>
-		  <optgroup label="English (Indian) (en-IN)">
-			<option value="Aditi" <?php if($voice== 'Aditi') { echo "SELECTED";} ?>>Aditi - Female - en-IN</option>
-			<option value="Raveena" <?php if($voice== 'Raveena') { echo "SELECTED";} ?>>Raveena - Female - en-IN</option>
-		  </optgroup>
-		  <optgroup label="Portuguese (Brazilian) (pt-BR)">
-			<option value="Ricardo" <?php if($voice== 'Ricardo') { echo "SELECTED";} ?>>Ricardo - Male - pt-BR</option>
-			<option value="Vitoria" <?php if($voice== 'Vitoria') { echo "SELECTED";} ?>>Vitória - Female - pt-BR</option>
-		  </optgroup>
-		   <optgroup label="Portuguese (European) (pt-PT)">
-			<option value="Cristiano" <?php if($voice== 'Cristiano') { echo "SELECTED";} ?>>Cristiano - Male - pt-PT</option>
-			<option value="Ines" <?php if($voice== 'Ines') { echo "SELECTED";} ?>>Inês - Female - pt-PT</option>
-		  </optgroup>
-		  <optgroup label="German (de-DE)">
-			<option value="Hans" <?php if($voice== 'Hans') { echo "SELECTED";} ?>>Hans - Male - DE</option>
-			<option value="Marlene" <?php if($voice== 'Marlene') { echo "SELECTED";} ?>>Marlene - Female - DE</option>
-			<option value="Vicki" <?php if($voice== 'Vicki') { echo "SELECTED";} ?>>Vicki - Female - DE</option>
-		  </optgroup>
-		  <optgroup label="Russian (ru-RU)">
-			<option value="Maxim" <?php if($voice== 'Maxim') { echo "SELECTED";} ?>>Maxim - Male - RU</option>
-			<option value="Tatyana" <?php if($voice== 'Tatyana') { echo "SELECTED";} ?>>Tatyana - Female - RU</option>
-		  </optgroup>
-		  <optgroup label="Danish (da-DK)">
-			<option value="Mads" <?php if($voice== 'Mads') { echo "SELECTED";} ?>>Mads - Male - DK</option>
-			<option value="Naja" <?php if($voice== 'Naja') { echo "SELECTED";} ?>>Naja - Female - DK</option>
-		  </optgroup>
-		  <optgroup label="Dutch (nl-NL)">
-			<option value="Lotte" <?php if($voice== 'Lotte') { echo "SELECTED";} ?>>Lotte - Female - NL</option>
-			<option value="Ruben" <?php if($voice== 'Ruben') { echo "SELECTED";} ?>>Ruben - Male - NL</option>
-		  </optgroup>
+				<optgroup label="English (US) (en-US)">
+					
+					<option value="Joanna" <?php if($voice== 'Joanna') { echo "SELECTED";} ?>>Joanna - Female - US</option>
+					<option value="Joey" <?php if($voice== 'Joey') { echo "SELECTED";} ?>>Joey - Male - US</option>
+					<option value="Kendra" <?php if($voice== 'Kendra') { echo "SELECTED";} ?>>Kendra - Female - US</option>
+					<option value="Kimberly" <?php if($voice== 'Kimberly') { echo "SELECTED";} ?>>Kimberly - Female - US</option>
+					<option value="Matthew" <?php if($voice== 'Matthew') { echo "SELECTED";} ?>>Matthew - Male - US</option>
+					<option value="Salli" <?php if($voice== 'Salli') { echo "SELECTED";} ?>>Salli - Female - US</option>
+					<option value="Ivy" <?php if($voice== 'Ivy') { echo "SELECTED";} ?>>Ivy - Female child voice - US</option>
+					<option value="Justin" <?php if($voice== 'Justin') { echo "SELECTED";} ?>>Justin - Male child voice - US</option>
+				</optgroup>
+				<optgroup label="English (British) (en-GB)">
+					<option value="Amy" <?php if($voice== 'Amy') { echo "SELECTED";} ?>>Amy - Female - UK</option>
+					<option value="Brian" <?php if($voice== 'Brian') { echo "SELECTED";} ?>>Brian - Male - UK</option>
+					<option value="Emma" <?php if($voice== 'Emma') { echo "SELECTED";} ?>>Emma - Female - UK</option>
+				</optgroup>
+				  
+				  <optgroup label="Español (Castellano) (es-ES)">
+					<option value="Conchita" <?php if($voice== 'Conchita') { echo "SELECTED";} ?>>Conchita - Mujer - ES</option>
+					<option value="Enrique" <?php if($voice== 'Enrique') { echo "SELECTED";} ?>>Enrique - Hombre - ES</option>
+				  </optgroup>
+				  <optgroup label="Français (fr-FR)">
+					<option value="Celine" <?php if($voice== 'Celine') { echo "SELECTED";} ?>>Céline - Femme - FR</option>
+					<option value="Mathieu" <?php if($voice== 'Mathieu') { echo "SELECTED";} ?>>Mathieu - Homme - FR</option>
+				  </optgroup>
+				  <optgroup label="French (Canadian) (fr-CA))">
+					<option value="Chantal" <?php if($voice== 'Chantal') { echo "SELECTED";} ?>>Chantal - Femmme - fr-CA</option>
+				  </optgroup>
+				  <optgroup label="English (Australian) (en-AU)">
+					<option value="Nicole" <?php if($voice== 'Nicole') { echo "SELECTED";} ?>>Nicole - Female - en-AU</option>
+					<option value="Russell" <?php if($voice== 'Russell') { echo "SELECTED";} ?>>Russell - Male - en-AU</option>
+				  </optgroup>
+				  <optgroup label="English (Indian) (en-IN)">
+					<option value="Aditi" <?php if($voice== 'Aditi') { echo "SELECTED";} ?>>Aditi - Female - en-IN</option>
+					<option value="Raveena" <?php if($voice== 'Raveena') { echo "SELECTED";} ?>>Raveena - Female - en-IN</option>
+				  </optgroup>
+				  <optgroup label="Portuguese (Brazilian) (pt-BR)">
+					<option value="Ricardo" <?php if($voice== 'Ricardo') { echo "SELECTED";} ?>>Ricardo - Male - pt-BR</option>
+					<option value="Vitoria" <?php if($voice== 'Vitoria') { echo "SELECTED";} ?>>Vitória - Female - pt-BR</option>
+				  </optgroup>
+				   <optgroup label="Portuguese (European) (pt-PT)">
+					<option value="Cristiano" <?php if($voice== 'Cristiano') { echo "SELECTED";} ?>>Cristiano - Male - pt-PT</option>
+					<option value="Ines" <?php if($voice== 'Ines') { echo "SELECTED";} ?>>Inês - Female - pt-PT</option>
+				  </optgroup>
+				  <optgroup label="German (de-DE)">
+					<option value="Hans" <?php if($voice== 'Hans') { echo "SELECTED";} ?>>Hans - Male - DE</option>
+					<option value="Marlene" <?php if($voice== 'Marlene') { echo "SELECTED";} ?>>Marlene - Female - DE</option>
+					<option value="Vicki" <?php if($voice== 'Vicki') { echo "SELECTED";} ?>>Vicki - Female - DE</option>
+				  </optgroup>
+				  <optgroup label="Russian (ru-RU)">
+					<option value="Maxim" <?php if($voice== 'Maxim') { echo "SELECTED";} ?>>Maxim - Male - RU</option>
+					<option value="Tatyana" <?php if($voice== 'Tatyana') { echo "SELECTED";} ?>>Tatyana - Female - RU</option>
+				  </optgroup>
+				  <optgroup label="Danish (da-DK)">
+					<option value="Mads" <?php if($voice== 'Mads') { echo "SELECTED";} ?>>Mads - Male - DK</option>
+					<option value="Naja" <?php if($voice== 'Naja') { echo "SELECTED";} ?>>Naja - Female - DK</option>
+				  </optgroup>
+				  <optgroup label="Dutch (nl-NL)">
+					<option value="Lotte" <?php if($voice== 'Lotte') { echo "SELECTED";} ?>>Lotte - Female - NL</option>
+					<option value="Ruben" <?php if($voice== 'Ruben') { echo "SELECTED";} ?>>Ruben - Male - NL</option>
+				  </optgroup>
 
 	</select>
+
 <?php } else { ?>
 		<h3>How to sign up with Speechy?</h3>
 		<p>To make speechy work properly, you need to:</p>

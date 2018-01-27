@@ -38,7 +38,7 @@
 }
 
 .speechy_block_left {
-	width: 70%;
+	
 	float: left;
 }
 
@@ -46,6 +46,18 @@
 	width: 28%;
 	float: left;
 	margin: 0 0 0 15px;
+}
+
+.seventy {
+	width: 70%;
+}
+
+.thirty {
+	width: 28%;
+}
+
+.fifty {
+	width: 45%;
 }
 
 .speechy_block_how_to,
