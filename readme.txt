@@ -58,6 +58,13 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 0.9.2 =
+
+* new file created voice_samples.php
+* changes in speechy_settings.php
+* changes in speechy_how_to.php
+* small changes in style_backend.css
+
 = 0.9.1 =
 * Explanation added to the settings page about how to sinup with Speechy.
 * Default voice changed from Amy to Johanna.
