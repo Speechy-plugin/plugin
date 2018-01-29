@@ -6,9 +6,14 @@
         // Add Color Picker to all inputs that have 'color-field' class
         $( '.speechy-color-picker, .speechy-bg-color-picker, .speechy-text-color-picker' ).wpColorPicker();  		
     });
+	
 })( jQuery );
 
 /* Open window for changing plan and payment with stripe */
+
+function open_iframe(){
+	console.log('YES');
+}
 
 var speechyPopup = null;
 
@@ -29,7 +34,7 @@ function openPortal(onSubscription){
 	    var left = ((width / 2) - (w / 2)) + dualScreenLeft;
 	    var top = ((height / 2) - (h / 2)) + dualScreenTop;
 	    
-		speechyPopup = window.open(url, "", 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+		speechyPopup = window.open(url, "theFrame", 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 		speechyPopup.onbeforeunload = function(){
 			speechyPopup = null;
 		};
@@ -43,8 +48,9 @@ function openPortal(onSubscription){
 			if(url.indexOf(e.origin) != -1){
 			    var key = e.message ? "message" : "data";
 			    var data = e[key];
-			    console.log(data);
+			    // console.log(data);
 			    onSubscription(data.messageupdate);
+				
 			}
 		},false);
 		

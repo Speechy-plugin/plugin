@@ -102,9 +102,10 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 			<td><?= BANDWIDTHLIMIT; ?> <?php echo __("played MP3 files/month" , "speechy"); ?></td>
 		</tr>
 	</table>
-		
+	
 	<p>
-	<?php echo __("If you need more space and bandwidth, you can" , "speechy"); ?> <a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = messageupdate;});'><?php echo __("upgrade your plan here" , "speechy"); ?></a>.</p>
+	<?php echo __("If you need more space and bandwidth, you can" , "speechy"); ?> <a href='javascript:void()' class="open_iframe" onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = messageupdate;});' ><?php echo __("upgrade your plan here" , "speechy"); ?></a>.</p>
+	<?php //  ?>
 	<?php
 }else{
 	?>
@@ -137,8 +138,13 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	<label for="key"><?php echo __("Secret key" , "speechy"); ?></label>
 	<input type="text" id="speechy_secret_key" class="" name="speechy_settings[speechy_secret_key]" value="<?php echo (isset($options['speechy_secret_key']) && $options['speechy_secret_key'] != '') ? $options['speechy_secret_key'] : ''; ?>" placeholder="" />
 	
+	<div class="iframe_block">
+		<button class="close_iframe"><span>X</span> Close window</button>
+		<iframe name="theFrame" class="signup_iframe"></iframe>
+	</div>
+	
 <?php if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){ ?>
-	<br />
+	
 	<h3><?php echo __("Voice/Language setting" , "speechy"); ?></h3>
 	<label for="speech_voice"><?php echo __("Change your favorite voice" , "speechy"); ?> (<?php echo __("You can later change it on the post edit page" , "speechy"); ?>)</label>
 	
@@ -148,7 +154,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	//Voice list: http://docs.aws.amazon.com/polly/latest/dg/voicelist.html
 	// Doc: https://docs.aws.amazon.com/polly/latest/dg/API_Voice.html
 	?>
-	<h5>Tips: You can listen to all available voices <a href="?page=speechy-plugin&tab=voice_samples">here</a></h5>
+	
 	<select name="speechy_settings[voice]">
 				<optgroup label="English (US) (en-US)">
 					
@@ -213,7 +219,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 				  </optgroup>
 
 	</select>
-
+	<h4>Tips: You can listen to all available voices <a href="?page=speechy-plugin&tab=voice_samples">here</a></h4>
 <?php } else { ?>
 		<h3>How to sign up with Speechy?</h3>
 		<p>To make speechy work properly, you need to:</p>
