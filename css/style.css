@@ -54,58 +54,6 @@
 	width: 100% !important;
 }
 
-.pricing {
-	border: 1px solid #000;
-	border-right: 0;
-	text-align: center;
-	padding: 0 !important;
-	margin: 10px 0;
-}
-
-.pricing:last-child {
-	border-right: 1px solid #000;
-}
-
-.label.pricing {
-	font-weight: 700;
-	text-align: left;
-}
-
-.pricing .pricing_title {
-	background: #3994b7; 
-	font-size: 18px;
-	padding: 10px;
-	border-bottom: 1px solid #DDD;
-	color: #FFF;
-}
-
-.pricing .pricing_value {
-	background: #3994b7; 
-	color: #F9F167;
-	padding: 10px;
-	border-bottom: 1px solid #DDD;
-}
-
-.pricing .pricing_value span {
-	font-size: 28px;
-}
-
-.pricing .pricing_text { 
-	padding: 10px;
-	border-bottom: 1px solid #DDD;
-	height: 100px;
-}
-
-.pricing .pricing_feature { 
-	padding: 10px;
-	border-bottom: 1px solid #DDD;
-	height: 50px;
-}
-
-.pricing .pricing_feature span { 
-	font-size: 18px;
-}
-
 @media only screen and (max-width: 767px){
 	.single .speechy_mp3 {
 		padding: 0;
