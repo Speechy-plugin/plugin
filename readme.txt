@@ -58,6 +58,11 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 0.9.3 =
+
+* added the download icon to the player
+* Modal Popup added
+
 = 0.9.2 =
 
 * new file created voice_samples.php
