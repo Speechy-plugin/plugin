@@ -67,7 +67,7 @@ function openPortal2(onSubscription){
 	    var left = ((width / 2) - (w / 2)) + dualScreenLeft;
 	    var top = ((height / 2) - (h / 2)) + dualScreenTop;
 	    
-		speechyPopup = window.open(url, "theFrame", 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+		speechyPopup = window.open(url, "", 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 		speechyPopup.onbeforeunload = function(){
 			speechyPopup = null;
 		};
