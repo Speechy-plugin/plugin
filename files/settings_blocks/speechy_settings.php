@@ -51,7 +51,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	}else{
 		if($mp3Count >= $mp3Countreachlimits){
 			// Congratulations! Your listeners have maxed out your current monthly MP3 play limit. Your blog deserves an upgrade.
-			$plan_mp3_limit_notice = _e("<div class='limit_notice orange'><h4>You will soon reach your current plan's maximum MP3 hosting limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = messageupdate; });\">Upgrade your plan here</a> and keep up that great work!</h4></div>", "speechy");
+			$plan_mp3_limit_notice = _e("<div class='limit_notice orange'><h4>You will soon reach your current plan's maximum MP3 hosting limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });\">Upgrade your plan here</a> and keep up that great work!</h4></div>", "speechy");
 
 			$class_notice_mp3 = "orange";
 		} 
@@ -60,18 +60,19 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	/* hit files */
 	if($hitCount > BANDWIDTHLIMIT){
 		// You will soon reach your current plan’s maximum MP3 hosting limits. Upgrade your plan and keep up that great work!
-		$plan_hit_limit_notice = _e("<div class='limit_notice red'><h4>Congratulations! Your listeners have maxed out your current monthly MP3 play limit. Your blog deserves an upgrade.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = messageupdate;});\">Upgrade your plan here</a> and keep up that great work!</h4></div>", "speechy");
+		$plan_hit_limit_notice = _e("<div class='limit_notice red'><h4>Congratulations! Your listeners have maxed out your current monthly MP3 play limit. Your blog deserves an upgrade.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg;});\">Upgrade your plan here</a> and keep up that great work!</h4></div>", "speechy");
 		
 		$class_notice_hit = "red";
 	}else{
 		if($hitCount >= $hitCountreachlimits){
-			$plan_hit_limit_notice = _e("<div class='limit_notice orange'><h4>Well done! Your listeners have almost maxed out your current monthly MP3 play limit.</h4><h4>It looks like a great time for an upgrade. <a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = messageupdate; });\">Upgrade your plan</a> and keep up that great work!</h4></div>", "speechy");
+			$plan_hit_limit_notice = _e("<div class='limit_notice orange'><h4>Well done! Your listeners have almost maxed out your current monthly MP3 play limit.</h4><h4>It looks like a great time for an upgrade. <a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });\">Upgrade your plan</a> and keep up that great work!</h4></div>", "speechy");
 
 $class_notice_hit = "orange";
 		}
 	}
 }
 ?>
+<?php add_thickbox(); ?>
 
 <h2><?php echo __("Subscription Info" , "speechy"); ?></h2>
 
@@ -104,12 +105,12 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	</table>
 	
 	<p>
-	<?php echo __("If you need more space and bandwidth, you can" , "speechy"); ?> <a href='javascript:void()' class="open_iframe" onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = messageupdate;});' ><?php echo __("upgrade your plan here" , "speechy"); ?></a>.</p>
+	<?php echo __("If you need more space and bandwidth, you can" , "speechy"); ?> <a href='javascript:void()' class="open_iframe" onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = msg;});' ><?php echo __("upgrade your plan here" , "speechy"); ?></a>.</p>
 	<?php //  ?>
 	<?php
 }else{
 	?>
-	<div class='limit_notice red'><?php echo __("For Speechy to work properly, you need to enter the ID key and Secret key." , "speechy"); ?> <a href='javascript:void()' onclick="openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = messageupdate; });"><?php echo __("Sign up for a free plan here" , "speechy"); ?></a></div>
+	<div class='limit_notice red'><?php echo __("For Speechy to work properly, you need to enter the ID key and Secret key." , "speechy"); ?> <a href='javascript:void()' onclick="openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });"><?php echo __("Sign up for a free plan here" , "speechy"); ?></a></div>
 	<?php
 }
 ?>
@@ -124,7 +125,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 		
 	?>
 		<div class="notice notice-error">
-			<h3><?php echo __("Important: For Speechy to work properly, you need to enter the ID key and Secret key" , "speechy"); ?>.<br /><a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = messageupdate; });'><?php echo __("Sign up for a free plan here" , "speechy"); ?></a>.</h3>
+			<h3><?php echo __("Important: For Speechy to work properly, you need to enter the ID key and Secret key" , "speechy"); ?>.<br /><a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = msg; });'><?php echo __("Sign up for a free plan here" , "speechy"); ?></a>.</h3>
 		</div>
 	<?php
 	}
@@ -224,7 +225,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 		<h3>How to sign up with Speechy?</h3>
 		<p>To make speechy work properly, you need to:</p>
 		<ol>
-			<li>Create an account by <a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = messageupdate; });'><?php echo __("Sign up for a free plan here" , "speechy"); ?></a>. A popup will open. Click on the Sign up button and fill the form</li>
+			<li>Create an account by <a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = msg; });'><?php echo __("Sign up for a free plan here" , "speechy"); ?></a>. A popup will open. Click on the Sign up button and fill the form</li>
 			<li>After signing up, a confirmation email will be sent to your email adress. Open this email and click the confirmation link you will find inside.</li>
 			<li>Then, you can sign in through same the popup window you used to sign up.</li>
 			<li>After sign in, you will have access to your ID key and Secret key. Copy/paste those keys in your Speechy settings page (the two fields above).</li>
