@@ -23,7 +23,7 @@ function createSpeechyAudio( $post_id){
 		// Setting the voice	
 		$voice = ($speechy_voice != "") ? $speechy_voice : VOICE;
 		
-		$post_object = get_post( $post_id );
+		$post_object = get_post( $post_id, OBJECT, 'display' );
 		$content = "<h1>".$post_object->post_title."</h1>\n";
 			
 		if (trim($speechy_text) == ""){ 
