@@ -13,16 +13,26 @@
 .single .speechy_mp3 .mejs-container {
 	margin-bottom: 0 !important;
 }
+
+.single .speechy_mp3 .powered_by img {
+	margin: 0 0 0 5px;
+	display: inline-block !important;
+}
+	
+.single .speechy_mp3 .powered_by img a,
+.single .speechy_mp3 .powered_by img a:hover {
+	decoration: none;
+}
+	
 .single .speechy_mp3 .download_link {
 	text-align: right;
-	width: 300px;
-    float: right;
-	padding: 4px 0 0 0;
-	font-size: 0.8em;
-	background: url(../images/download-link.png);
-    background-position: left 8px;
+    padding: 0;
+    font-size: 0.8em;
+    background: url(../images/download-link.png);
+    background-position: left center;
     background-size: 20px;
     background-repeat: no-repeat;
+    float: right;
     width: 100px;
 }
 
@@ -74,16 +84,6 @@
 
 	.single .speechy_mp3 .powered_by {
 		margin: 0 10px 0 0;
-	}
-	
-	.single .speechy_mp3 .powered_by img {
-		margin: 0 0 0 5px;
-		display: inline-block !important;
-	}
-	
-	.single .speechy_mp3 .powered_by img a,
-	.single .speechy_mp3 .powered_by img a:hover {
-		decoration: none;
 	}
 	
 	.single .speechy_mp3 .download_link {
