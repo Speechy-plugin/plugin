@@ -22,6 +22,7 @@
 .single .speechy_mp3 .powered_by img a,
 .single .speechy_mp3 .powered_by img a:hover {
 	decoration: none;
+	border-bottom: 0 !important;
 }
 	
 .single .speechy_mp3 .download_link {
