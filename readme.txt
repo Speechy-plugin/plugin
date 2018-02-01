@@ -58,6 +58,16 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 1.2 =
+
+* processing post content to avoid shortcodes ad other codes in the content
+* positionning download icon.
+
+
+= 1.1 =
+
+* some css changes on the MP3 player.
+
 = 1.0 =
 
 * added the monthly conversion limits
