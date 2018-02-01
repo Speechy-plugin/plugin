@@ -3,7 +3,7 @@
    Plugin Name: Speechy
    Plugin URI: https://speechy.io
    Description: Speechy is a plugin that uses the world's best text-to-speech software, Amazon Polly, to automatically create impressive MP3 versions of your blog posts.
-   Version: 0.9.3
+   Version: 0.9.4
    Author: Nicolas Point
    Author URI: https://speechy.io
    License: GPL2
@@ -152,6 +152,7 @@ $resp = $speechyApi->getUsage();
 // Plan limits.
 define('HOSTINGLIMIT', $resp['data']['mp3Limit']);
 define('BANDWIDTHLIMIT', $resp['data']['hitLimit']);
+define('MP3UPDATELIMIT', $resp['data']['mp3UpdateLimit']);
 
 /* Mayankk */
 require  __DIR__ . '/vendor/persist-admin-notices-dismissal-master/persist-admin-notices-dismissal.php';

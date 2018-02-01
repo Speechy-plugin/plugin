@@ -15,12 +15,15 @@
 }
 .single .speechy_mp3 .download_link {
 	text-align: right;
-	padding: 0;
+	width: 300px;
+    float: right;
+	padding: 4px 0 0 0;
 	font-size: 0.8em;
 	background: url(../images/download-link.png);
-    background-position: 87% center;
+    background-position: left 8px;
     background-size: 20px;
     background-repeat: no-repeat;
+    width: 100px;
 }
 
 .single .fixed_up {
@@ -54,7 +57,7 @@
 	width: 100% !important;
 }
 
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 767px){ 
 	.single .speechy_mp3 {
 		padding: 0;
 		margin: 0;

@@ -58,6 +58,11 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 1.0 =
+
+* added the monthly conversion limits
+* added logo and alt tag to the front page MP3 player.
+
 = 0.9.3 =
 
 * added the download icon to the player

@@ -23,37 +23,42 @@ if($plan_id == "free"){
 }
 
 /* Warning Notice */
-define('WARNINGMP3', $resp['data']['hitLimit']);
+define('WARNINGMP3', $resp['data']['mp3Limit']);
 define('WARNINGHIT', $resp['data']['hitLimit']);
+define('WARNINGCONVERSIONS', $resp['data']['mp3UpdateLimit']);
 
 /* ** Actual consumption ** */
 $mp3Count = $resp['data']['mp3Count'];
 $hitCount = $resp['data']['hitCount'];
+$mp3UpdateCount = $resp['data']['mp3UpdateCount'];
 
 /* Reaching limit */
 $mp3Countreachlimits = HOSTINGLIMIT * 0.9;
 $hitCountreachlimits = BANDWIDTHLIMIT * 0.9;
+$hitConversionsreachlimits = MP3UPDATELIMIT * 0.9;
 
 /* ** Plans limit notice ** */
 $class_notice_mp3 = "none";
 $class_notice_hit = "none";
+$class_notice_conversions = "none";
 
+$planclassmp3 = $planclasshit = $planclassconv = "green";
 
 //get the older values, wont work the first time
 $options = get_option( 'speechy_settings' ); 
 
-/* MP3 files */
 if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
+	/* MP3 files */
 	if($mp3Count > HOSTINGLIMIT){
 		$plan_mp3_limit_notice = _e("<div class='limit_notice red'><h4>You have reached your current plan's maximum MP3 hosting limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ alert(msg);});\">Upgrade your plan here</a> and keep creating more amazing MP3 files for your blog!</h4></div>", "speechy");
 		
-		$class_notice_mp3 = "red";
+		$class_notice_mp3 = $planclassmp3 = "red";
 	}else{
 		if($mp3Count >= $mp3Countreachlimits){
 			// Congratulations! Your listeners have maxed out your current monthly MP3 play limit. Your blog deserves an upgrade.
 			$plan_mp3_limit_notice = _e("<div class='limit_notice orange'><h4>You will soon reach your current plan's maximum MP3 hosting limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });\">Upgrade your plan here</a> and keep up that great work!</h4></div>", "speechy");
 
-			$class_notice_mp3 = "orange";
+			$class_notice_mp3 = $planclassmp3 = "orange";
 		} 
 	}
 	
@@ -62,12 +67,26 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 		// You will soon reach your current plan’s maximum MP3 hosting limits. Upgrade your plan and keep up that great work!
 		$plan_hit_limit_notice = _e("<div class='limit_notice red'><h4>Congratulations! Your listeners have maxed out your current monthly MP3 play limit. Your blog deserves an upgrade.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg;});\">Upgrade your plan here</a> and keep up that great work!</h4></div>", "speechy");
 		
-		$class_notice_hit = "red";
+		$class_notice_hit = $planclasshit = "red";
 	}else{
 		if($hitCount >= $hitCountreachlimits){
 			$plan_hit_limit_notice = _e("<div class='limit_notice orange'><h4>Well done! Your listeners have almost maxed out your current monthly MP3 play limit.</h4><h4>It looks like a great time for an upgrade. <a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });\">Upgrade your plan</a> and keep up that great work!</h4></div>", "speechy");
 
-$class_notice_hit = "orange";
+			$class_notice_hit = $planclasshit = "orange";
+		}
+	}
+	
+	/* Conversion files */
+	if($mp3UpdateCount > MP3UPDATELIMIT){
+		// You will soon reach your current plan’s maximum MP3 hosting limits. Upgrade your plan and keep up that great work!
+		$plan_conversion_limit_notice = _e("<div class='limit_notice red'><h4>You have reached your current plan's maximum MP3 conversion limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ alert(msg);});\">Upgrade your plan here</a> and keep creating more amazing MP3 files for your blog!</h4></div>", "speechy");
+		
+		$class_notice_conversion =  $planclassconv = "red";
+	}else{
+		if($mp3UpdateCount >= $hitConversionsreachlimits){
+			$plan_conversion_limit_notice = _e("<div class='limit_notice orange'><h4>You will soon reach your current plan's maximum MP3 conversion limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });\">Upgrade your plan here</a> and keep up that great work!</h4></div>", "speechy");
+
+			$class_notice_conversion = $planclassconv = "orange";
 		}
 	}
 }
@@ -85,23 +104,24 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	<?php	
 	echo $plan_mp3_limit_notice;
 	echo $plan_hit_limit_notice; 
+	echo $plan_conversion_limit_notice;
 	?>
 		
-	<table class="table">
+	<table class="table yourplan">
+				
 		<tr>
-			<th><?php echo __("Your consumption" , "speechy"); ?>
-				</th>
-			<th><?php echo __("Your plan's limits" , "speechy"); ?>
-				</th>
+			<td class="<?= $class_notice_conversion; ?>"><?php echo __("MP3 conversions" , "speechy"); ?></td>
+			<td><span class="<?= $planclassconv; ?>"><?= $mp3UpdateCount; ?></span> / <?= MP3UPDATELIMIT; ?></td>
 		</tr>
 		<tr>
-			<td class="<?= $class_notice_mp3; ?>"><?= $mp3Count; ?> <?php echo __("MP3 files created" , "speechy"); ?></td>
-			<td><?= HOSTINGLIMIT; ?> <?php echo __("MP3 files" , "speechy"); ?></td>
+			<td class="<?= $class_notice_mp3; ?>"><?php echo __("MP3 stored on Amazon Cloud" , "speechy"); ?></td>
+			<td><span class="<?= $planclassmp3; ?>" ><?= $mp3Count; ?></span> / <?= HOSTINGLIMIT; ?></td>
 		</tr>
 		<tr>
-			<td class="<?= $class_notice_hit; ?>"><?= $hitCount; ?> <?php echo __("MP3 played this month" , "speechy"); ?></td>
-			<td><?= BANDWIDTHLIMIT; ?> <?php echo __("played MP3 files/month" , "speechy"); ?></td>
+			<td class="<?= $class_notice_hit; ?>"> <?php echo __("MP3 played this month" , "speechy"); ?></td>
+			<td><span class="<?= $planclasshit; ?>"><?= $hitCount; ?></span> / <?= BANDWIDTHLIMIT; ?></td>
 		</tr>
+	
 	</table>
 	
 	<p>
