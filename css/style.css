@@ -76,6 +76,16 @@
 		margin: 0 10px 0 0;
 	}
 	
+	.single .speechy_mp3 .powered_by img {
+		margin: 0 0 0 5px;
+		display: inline-block !important;
+	}
+	
+	.single .speechy_mp3 .powered_by img a,
+	.single .speechy_mp3 .powered_by img a:hover {
+		decoration: none;
+	}
+	
 	.single .speechy_mp3 .download_link {
 		text-align: right;
 		padding: 0;

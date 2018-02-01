@@ -18,8 +18,8 @@ function speechy_find_mp3($content){
 				$custom_content .= "<div class='speechy_mp3 clearfix'>";
 				$custom_content .= "<span class='player_title'>".PLAYER_TITLE."</span>";
 				$custom_content .= do_shortcode( '[audio src="'.$sp_mp3.'"]' );
-				$custom_content .= "<small class='powered_by'>Powered by <a href='https://www.speechy.io/?utm_source=plugin&utm_medium=link&utm_campaign=powered_by' target='_blank' title='Try Speechy' alt='text-to-speech wordpress plugin'>Speechy.io</a></small>";
-				$custom_content .= "<div class='download_link'><a href='".$sp_mp3."' onclick="ga('send', 'event', 'Button', 'Download MP3', 'Users blog', '0');>Download</a></div>";
+				$custom_content .= "<small class='powered_by'>Powered by <a href='https://www.speechy.io/?utm_source=plugin&utm_medium=link&utm_campaign=powered_by' target='_blank' title='Try Speechy' alt='text-to-speech wordpress plugin'><img src='". plugins_url() ."/speechy/images/Speechy_icon_logo_32px.png'</a></small>";
+				$custom_content .= "<div class='download_link'><a href='".$sp_mp3."' onclick=\"ga('send', 'event', 'Button', 'Download MP3', 'Users blog', '0');\">Download</a></div>";
 				$custom_content .= "</div>";
 				$custom_content .= $content;
 				
