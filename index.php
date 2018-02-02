@@ -13,7 +13,7 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 
-/* Speechy Callback Handling */
+/* Speechy Callback Handling */ 
 function speechy_callback($vars = '') {
 	if($vars['pagename'] == 'speechy_callback'){
 		$post_id = SpeechyAPi::getPostIdFromRequest();

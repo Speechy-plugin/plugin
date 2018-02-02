@@ -1,5 +1,5 @@
 <?php
-// looking for the MP3 field in the front end content
+// looking for the MP3 field in the front end content 
 function speechy_find_mp3($content){
 	global $post;
 	$post_id = $post->ID;
