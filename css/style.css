@@ -14,6 +14,10 @@
 	margin-bottom: 0 !important;
 }
 
+.single .speechy_mp3 .powered_by {
+	line-height: 26px;
+}
+
 .single .speechy_mp3 .powered_by img {
 	margin: 0 0 0 5px;
 	display: inline-block !important;
@@ -27,7 +31,7 @@
 	
 .single .speechy_mp3 .download_link {
 	text-align: right;
-    padding: 0 0 0 25px;
+    padding: 0;
     font-size: 0.9em;
     background: url(../images/download-link.png);
     background-position: left center;
@@ -36,6 +40,10 @@
     float: right;
     width: auto;
     overflow: visible;
+}
+
+.single .speechy_mp3 .download_link a {
+	padding: 0 0 0 25px;
 }
 
 .single .fixed_up {
@@ -93,6 +101,8 @@
 		padding: 0;
 		font-size: 0.8em;
 	}
+	
+	
 	
 	#pricing-page-wrapper .label {
 		display: none;
