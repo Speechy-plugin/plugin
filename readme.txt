@@ -58,28 +58,29 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
-= 1.2 =
+= 1.4 =
+* Url changes for the speechy icon.
 
+= 1.3 =
+* Small changes in the css for download link
+* Callback url issue fixed
+
+= 1.2 =
 * processing post content to avoid shortcodes ad other codes in the content
 * positionning download icon.
 
-
 = 1.1 =
-
 * some css changes on the MP3 player.
 
 = 1.0 =
-
 * added the monthly conversion limits
 * added logo and alt tag to the front page MP3 player.
 
 = 0.9.3 =
-
 * added the download icon to the player
 * Modal Popup added
 
 = 0.9.2 =
-
 * new file created voice_samples.php
 * changes in speechy_settings.php
 * changes in speechy_how_to.php
@@ -97,7 +98,6 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 * Added a "Need Help" section in the settings page
 * Create audio success message changed
 * readme.txt file content updated.
-
 
 = 0.8.1 =
 * Added github uploader
