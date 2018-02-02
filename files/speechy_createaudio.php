@@ -38,7 +38,7 @@ function createSpeechyAudio( $post_id){
 			return; 
 		
 		// ** SpeechyAPi
-		$callbackUrl = get_site_url()."/speechy_callback";
+		$callbackUrl = get_site_url()."/?p=speechy_callback";
 		$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
 		$resp = $speechyApi->createAudio($post_id, $content, $voice, $callbackUrl);
 		

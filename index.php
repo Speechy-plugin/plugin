@@ -15,7 +15,7 @@ if ( !defined('ABSPATH') )
 
 /* Speechy Callback Handling */
 function speechy_callback($vars = '') {
-	if($vars['pagename'] == 'speechy_callback'){
+	if($vars['p'] == 'speechy_callback'){
 		$post_id = SpeechyAPi::getPostIdFromRequest();
 		update_post_meta( $post_id, 'mp3_ready', 1);
 		echo "done";
