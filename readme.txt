@@ -58,8 +58,11 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 1.4 =
+* Url changes for the speechy icon.
+
 = 1.3 =
-* Small changes in the css dor download link
+* Small changes in the css for download link
 * Callback url issue fixed
 
 = 1.2 =
@@ -95,7 +98,6 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 * Added a "Need Help" section in the settings page
 * Create audio success message changed
 * readme.txt file content updated.
-
 
 = 0.8.1 =
 * Added github uploader
