@@ -58,6 +58,9 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 1.5 =
+* Change in the file that look for the MP3 to show the player.
+
 = 1.4 =
 * Url changes for the speechy icon.
 
