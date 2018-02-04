@@ -15,12 +15,16 @@
 }
 
 .single .speechy_mp3 .powered_by {
-	line-height: 26px;
+    display: inline-block;
+    position: relative;
+    padding: 0 40px 0 0;
 }
 
 .single .speechy_mp3 .powered_by img {
-	margin: 0 0 0 5px;
-	display: inline-block !important;
+	margin: 0 0 0 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 	
 .single .speechy_mp3 .powered_by img a,
@@ -73,8 +77,14 @@
 	display: none !important;
 }
 
+/* Player */ 
+
 .mejs-container {
 	width: 100% !important;
+}
+
+.mejs-button>button {
+    background: transparent url(mejs-controls.svg) !important;
 }
 
 @media only screen and (max-width: 767px){ 
