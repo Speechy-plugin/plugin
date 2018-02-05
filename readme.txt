@@ -58,6 +58,10 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 1.6 =
+* CSS modifications
+* Voices updated on the dropdown list.
+
 = 1.5 =
 * Change in the file that look for the MP3 to show the player.
 
