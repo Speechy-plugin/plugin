@@ -84,7 +84,7 @@
 }
 
 .mejs-button>button {
-    background: transparent url(mejs-controls.svg) !important;
+    background: transparent url(../wp-includes/js/mediaelement/mejs-controls.svg) !important;
 }
 
 @media only screen and (max-width: 767px){ 
