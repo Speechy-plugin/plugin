@@ -25,7 +25,7 @@ if($plan_id == "free"){
 /* Warning Notice */
 define('WARNINGMP3', $resp['data']['mp3Limit']);
 define('WARNINGHIT', $resp['data']['hitLimit']);
-define('WARNINGCONVERSIONS', $resp['data']['mp3UpdateLimit']);
+define('MP3UPDATELIMIT', $resp['data']['mp3UpdateLimit']);
 
 /* ** Actual consumption ** */
 $mp3Count = $resp['data']['mp3Count'];

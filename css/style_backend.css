@@ -122,6 +122,10 @@
 	color: green;
 }
 
+.limit_notice {
+	margin: 20px;
+}
+
 .limit_notice.orange {
 	border: 1px solid orange;
 }
