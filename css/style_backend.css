@@ -159,6 +159,11 @@
 	margin: 0 0 5px 0;
 }
 
+/* popup iframe */
+
+#TB_iframeContent {
+	height: 650px !important;
+}
 
 .iframe_block {
 	display: none;
@@ -240,6 +245,16 @@
 	.signup_iframe {
 		height: 100%;
 		width: 100%;
+	}
+	
+	#TB_iframeContent {
+		width: 400px !important;
+		height: 650px !important;
+	}
+	
+	#TB_window {
+		width: 100% !important;
+		margin-left: -200px !important;
 	}
 
 }
