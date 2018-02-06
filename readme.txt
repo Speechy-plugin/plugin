@@ -58,6 +58,9 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 1.8 =
+* CSS changes.
+
 = 1.7 =
 * Changing icon path for speechy on the MP3 player.
 * CSS changes
