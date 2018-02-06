@@ -83,10 +83,6 @@
 	width: 100% !important;
 }
 
-.mejs-button>button {
-    background: transparent url(../wp-includes/js/mediaelement/mejs-controls.svg) !important;
-}
-
 @media only screen and (max-width: 767px){ 
 	.single .speechy_mp3 {
 		padding: 0;
