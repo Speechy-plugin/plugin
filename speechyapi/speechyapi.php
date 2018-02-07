@@ -46,10 +46,11 @@ class SpeechyAPi{
 		$html = str_replace("&amp;", "#amp;", $html);
 		$html = str_replace("&lt;", "#lt;", $html);
 		$html = str_replace("&gt;", "#gt;", $html);
+		$html = str_replace("&nbsp;", "", $html);
 		
 		$html = preg_replace("/<.*?>(*SKIP)(*FAIL)|&/", "#amp;", $html);
 		$html = preg_replace("/<.*?>(*SKIP)(*FAIL)|</", "#lt;", $html);
-		$html = preg_replace("/<.*?>(*SKIP)(*FAIL)|>/", "#gt;", $html);
+		$html = preg_replace("/<.*?>(*SKIP)(*FAIL)|>/", "#gt;", $html); // &nbsp;
 		$html = str_replace("<amazon:effect", "<amazoneffect", $html);
 		$html = str_replace("</amazon:effect>", "</amazoneffect>", $html);
 		
