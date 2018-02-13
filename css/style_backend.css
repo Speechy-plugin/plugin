@@ -94,7 +94,8 @@
 	padding: 10px;
 }
 
-.table td span {
+.table td span,
+.speechy .speechy_block_left h3 span {
 	font-size: 30px;
 }
 

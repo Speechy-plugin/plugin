@@ -33,22 +33,27 @@ Speechy is a WordPress plugin that uses the world’s best text-to-speech softwa
 
 	<ol>
 		<li>When logged inside the popup window, you will see your information and also two keys: ID key and Secret key.</li>
-		<li>Copy/paste those keys inside your speechy settings page, and your done!</li>
+		<li>Click on the "Apply Credentials" button to copy/paste them automatically into your key fields, and your done!</li>
 	</ol>
 
 <? }else{
 ?>
 	<h4>Select your prefered voice/language</h4>
 		
-	<p>To select your standart prefered voice, go to the "<a href="?page=speechy-plugin&tab=speechy_settings">Speechy Settings</a>" tab, and below the title "Voice/Language setting", select a voice from the drop-down menu (male or female)</p>
-	<p>In order to help you to choose the right voice for you, you can also listen to a sample of each voice in the "<a href="?page=speechy-plugin&tab=voice_samples">Voices samples</a>" tab.</p>
+	<p>To select your standart prefered voice, go to the "<a href="?page=speechy-plugin&tab=speechy_settings">Speechy Settings</a>" tab, and below the title "Choose your Voice/Language", select a voice from the drop-down menu (male or female)</p>
+	<p>In order to help you to choose the right voice for you, you can also listen to a sample of each voice in the "<a href="?page=speechy-plugin&tab=voice_samples">Voice samples</a>" tab.</p>
 
-	<h4>On the post edit page (optional)</h4>
+	<h4>On the post edit page</h4>
 
 	<ol>
-		<li>Adapt your content to audio version:<br />on the post edit page, by default, Speechy will use your main content. But if you need to adapt your content to an audio version, inside the Speechy optional setting, you can change your post content. If this texte area is not empty, speechy will use its content to create the audio version.</li>
-		<li>Select a voice for a specific post:<br />on the post edit page, inside the Speechy optional setting, you can also change the default voice using the drop down menu.</li>
-		<li>You also have a checkbox if you do not want to convert your post to MP3 if you want.</li>
+		<li><b>Convert your post content into an MP3 file</b>:<br />To convert your post content into an MP3 file, you just have to write your post using the main text editor, as you normally do. But most of the time, you will have to adapt your post a little...</li>
+		<li><b>Adapt your content to audio version:</b><br />on the post edit page, by default, Speechy will use your main content. But if you need to adapt your content to an audio version, inside the Speechy optional setting, you should use the text area called "Speechy text version" to adapt your post content.<br />Be aware that Polly (we use Amazon Polly for text-to-speech conversion) will read your text as is. For example, if you don't put a period at the end of a title, Polly will not make a pause between this title and the following sentence.<br />Also note that if you write content in the "Speechy text version" text area, Speechy will use this content (and not the content within the main text editor) for the MP3 conversion.</li>
+		<li><b>Choose a different voice than the default one:</b><br />on the post edit page, inside the Speechy optional setting, if you want, you can also change the default voice that you shoosed on the Speechy settings page using the drop down menu.</li>
+		<li><b>Not converting a post into an MP3 file:</b><br />Sometimes, when creating a new post, you don't want to convert the post into an MP3 file (for example for a video). To do so, just check the "Speechy checkbox" checkbox.</li>
 	</ol>
+	
+	<p>And you're done! </p>
+
+	<p>From now on, you can easily convert your posts into MP3 files and give your beloved readers, a new and original way to consume your blog's content.</p>
 <?php
 } ?>

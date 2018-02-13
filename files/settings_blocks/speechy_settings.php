@@ -104,7 +104,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 <?php
 if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null !== HOSTINGLIMIT){
 	?>
-	<h3><?php echo __("Your current plan is:" , "speechy"); ?> <?= $plan; ?></h3>
+	<h3><?php echo __("Your current plan is:" , "speechy"); ?> <span><?= $plan; ?></span></h3>
 	<div id="updated-msg"></div>
 	
 	<?php	
@@ -172,7 +172,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 	
 <?php if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){ ?>
 	
-	<h3><?php echo __("Voice/Language setting" , "speechy"); ?></h3>
+	<h3><?php echo __("Choose your Voice/Language" , "speechy"); ?></h3>
 	<label for="speech_voice"><?php echo __("Change your favorite voice" , "speechy"); ?> (<?php echo __("You can later change it on the post edit page" , "speechy"); ?>)</label>
 	
 	<?php $voice = (isset($options['voice']) && $options['voice'] != '') ? $options['voice'] : ''; ?>
