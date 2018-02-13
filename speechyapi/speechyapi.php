@@ -59,6 +59,7 @@ class SpeechyAPi{
 		
 		$repairedXMLList = [];
 		foreach ($sentenceList as $sentence){
+			if(trim($sentence) == "") continue;
 			$x = new DOMDocument;
 			@$x->loadHTML(mb_convert_encoding($sentence, 'HTML-ENTITIES', 'UTF-8'));
 			$tmp = $x->saveXML();
