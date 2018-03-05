@@ -13,6 +13,10 @@ class SpeechyAPi{
 	private $idKey = "";
 	private $secretKey = "";
 	
+	const PREPENDTYPE_NONE = '';
+	const PREPENDTYPE_MP3 = 'mp3';
+	const PREPENDTYPE_TEXT = 'text';
+	
 	public function SpeechyAPi($idKey, $secretKey){
 		$this->idKey = $idKey;
 		$this->secretKey = $secretKey;
@@ -144,7 +148,23 @@ class SpeechyAPi{
 		return false;
 	}
 	
-	public function createAudio($postId, $html, $voice = "Amy", $callbackUrl = false){
+	/**
+	 * 
+	 * @param string $postId
+	 * @param string $html
+	 * @param string $voice
+	 * @param string $callbackUrl
+	 * @param string $prependType PREPENDTYPE_NONE | PREPENDTYPE_MP3 | PREPENDTYPE_TEXT
+	 * @param string $prependMp3Id in case of PREPENDTYPE_MP3
+	 * @param string $prependText in case of PREPENDTYPE_TEXT
+	 * @return array
+	 */
+	public function createAudio($postId, $html, $voice = "Amy", $callbackUrl = false, $prependType = self::PREPENDTYPE_NONE, $prependMp3Id = false, $prependText = false){
+		
+		if($prependType == self::PREPENDTYPE_TEXT && $prependText !== false){
+			$html = "<p>$prependText</p>".$html;
+		}
+		
 		$contentList = $this->processAudioToContent($html);
 		if(count($contentList) == 0) return false;
 		
@@ -152,8 +172,12 @@ class SpeechyAPi{
 			"post_id" => $postId,
 			"contentlist" => $contentList,
 			"voice" => $voice,
-			"callback_url" =>$callbackUrl
+			"callback_url" =>$callbackUrl,
+				
 		);
+		if($prependType == self::PREPENDTYPE_MP3 && $prependMp3Id !== false)
+			$jsonArr['prependId'] = $prependMp3Id;
+		
 		if($callbackUrl !== false) $resp = $this->_callApi("create-audio-delayed", "post", $jsonArr);
 		else $resp = $this->_callApi("create-audio", "post", $jsonArr);
 		return $resp;
@@ -164,6 +188,38 @@ class SpeechyAPi{
 			"post_id" => $postId
 		);
 		$resp = $this->_callApi("delete-audio", "post", $jsonArr);
+		return $resp;
+	}
+	
+	public function getMp3List(){
+		$jsonArr = array(
+			"action" => "get"
+		);
+		
+		$resp = $this->_callApi("mp3-api", "post", $jsonArr);
+		return $resp;
+	}
+	
+	public function addMp3($name, $filename){
+		$mp3data = file_get_contents($filename);
+		$mp3data = base64_encode($mp3data);
+		$jsonArr = array(
+			"action" => "add",
+			"name" => $name,
+			"filedata" => $mp3data
+		);
+		
+		$resp = $this->_callApi("mp3-api", "post", $jsonArr);
+		return $resp;
+	}
+	
+	public function deleteMp3($id){
+		$jsonArr = array(
+			"action" => "delete",
+			"id" => $id
+		);
+		
+		$resp = $this->_callApi("mp3-api", "post", $jsonArr);
 		return $resp;
 	}
 	
