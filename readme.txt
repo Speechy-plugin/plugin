@@ -62,6 +62,7 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 * Changes in the preparation of the text before MP3 conversion.
 * Small changes in the settings and CSS pages.
 * Text modifications on the How To page.
+
 = 1.9 =
 * Speechy player will only appear on songle post
 * Improvement for detecting if an account is valid in the settings page.

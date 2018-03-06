@@ -92,11 +92,20 @@
 .table th,
 .table td {
 	padding: 10px;
+	vertical-align: top;
 }
 
 .table td span,
 .speechy .speechy_block_left h3 span {
 	font-size: 30px;
+}
+
+.player_settings input[type=radio] {
+	vertical-align: top;
+}
+.player_settings td {
+	padding: 10px;
+	vertical-align: top;
 }
 
 .limit_notice, #updated-msg p {

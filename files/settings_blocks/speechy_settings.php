@@ -16,7 +16,7 @@ premium-plan
 $plan_id = $resp['data']['plan'];
 
 if($plan_id == "free"){
-	$plan =  "Free Plan";
+	$plan =  "14 days Free Trial";
 }else{
 	$plan = str_replace("-", " ", $plan_id);
 	$plan = ucfirst($plan);
@@ -32,6 +32,11 @@ $mp3Count = $resp['data']['mp3Count'];
 $hitCount = $resp['data']['hitCount'];
 $mp3UpdateCount = $resp['data']['mp3UpdateCount'];
 
+if($plan_id == "free"){
+	$freePlanValidity = $resp['data']['freePlanValidity'];
+	define('FREEPLANVALIDITY', $freePlanValidity);
+	
+}
 /* Reaching limit */
 $mp3Countreachlimits = HOSTINGLIMIT * 0.9;
 $hitCountreachlimits = BANDWIDTHLIMIT * 0.9;
@@ -104,17 +109,25 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 <?php
 if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null !== HOSTINGLIMIT){
 	?>
-	<h3><?php echo __("Your current plan is:" , "speechy"); ?> <span><?= $plan; ?></span></h3>
-	<div id="updated-msg"></div>
+	<h3>
+		<?php 
+		if($plan_id == "free"){ 
+			echo "You have <span>".FREEPLANVALIDITY."</span> days left on your free trial"; } 
+		else {
+			echo __("Your current plan is:" , "speechy") . "<span>" . $plan . "</span>";	
+		}   
+		?>
+		(<a href='javascript:void()' class="open_iframe" onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = msg;});' ><?php echo __('Upgrade', 'speechy'); ?></a>)</h3>
+		
+		<div id="updated-msg"></div>
 	
 	<?php	
 	echo $plan_mp3_limit_notice;
 	echo $plan_hit_limit_notice; 
 	echo $plan_conversion_limit_notice;
 	?>
-		
-	<table class="table yourplan">
-				
+
+	<table class="table yourplan">		
 		<tr>
 			<td class="<?= $class_notice_conversion; ?>"><?php echo __("MP3 conversions" , "speechy"); ?></td>
 			<td><span class="<?= $planclassconv; ?>"><?= $mp3UpdateCount; ?></span> / <?= MP3UPDATELIMIT; ?></td>
@@ -171,6 +184,14 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 	</div>
 	
 <?php if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){ ?>
+	
+	<?php $position = (isset($options['position']) && $options['position'] != '') ? $options['position'] : 'Before'; ?>
+	
+	<h3>Player position</h3>
+	<select name="speechy_settings[position]">
+		<option value="Before" <?php if($position== 'Before') { echo "SELECTED";} ?>>Before the post content</option>
+		<option value="After" <?php if($position== 'After') { echo "SELECTED";} ?>>After the post content</option>
+	</select>
 	
 	<h3><?php echo __("Choose your Voice/Language" , "speechy"); ?></h3>
 	<label for="speech_voice"><?php echo __("Change your favorite voice" , "speechy"); ?> (<?php echo __("You can later change it on the post edit page" , "speechy"); ?>)</label>
@@ -247,6 +268,39 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 
 	</select>
 	<h4>Tips: You can listen to all available voices <a href="?page=speechy-plugin&tab=voice_samples">here</a></h4>
+	
+	<h3><?php echo __("Default Welcome or sponsorship message to your audio posts" , "speechy"); ?></h3>
+	<label for="speech_voice">Choose an MP3 file from the droplist or upload an new MP3 form the <a href="<?php echo get_site_url(); ?>/wp-admin/upload.php">media page</a></label>
+	
+	<?php $process_custom_audio = (isset($options['process_custom_audio']) && $options['process_custom_audio'] != '') ? $options['process_custom_audio'] : ''; ?>
+	<?php /*
+	<p>
+		<input type="text" value="<?= $process_custom_audio; ?>" class="process_custom_images" id="speechy_settings[process_custom_audio]" name="speechy_settings[process_custom_audio]" >
+		<button class="set_custom_audio button">Select Audio Intro</button>
+	</p>
+	*/ ?>
+	
+	<?php
+	global $post;
+	$audio_attachments = get_posts( array(
+		'post_type' => 'attachment',
+		'post_mime_type' => 'audio'
+	) );
+	
+	?>
+	<select name="speechy_settings[process_custom_audio]">
+		<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3 added</option>
+		<?php
+		foreach ( $audio_attachments as $post ) {
+			setup_postdata( $post ); 
+			?>
+			<option value="<?php echo wp_get_attachment_url(); ?>" <?php if( $process_custom_audio== wp_get_attachment_url() ) { echo "SELECTED";} ?>><?php the_title(); ?></option>
+			<?php
+		}
+		wp_reset_postdata();
+	?>
+	</select>
+
 <?php } else { ?>
 		<h3>How to sign up with Speechy?</h3>
 		<p>To make speechy work properly, you need to:</p>
@@ -262,6 +316,6 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 </form>
 
 <?php if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){ ?>
-	<h3><?php echo __("MP3 player colors" , "speechy"); ?></h3>
-	<p><?php echo __("You can change the colors of the player" , "speechy"); ?> <a href="?page=speechy-plugin&tab=player_settings"><?php echo __("Here" , "speechy"); ?></a>.</p>
+	<h3><?php echo __("MP3 player settings" , "speechy"); ?></h3>
+	<p><?php echo __("You can select the design of the player" , "speechy"); ?> <a href="?page=speechy-plugin&tab=player_settings"><?php echo __("Here" , "speechy"); ?></a>.</p>
 <?php } ?>

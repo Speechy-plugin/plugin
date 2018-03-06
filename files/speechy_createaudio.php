@@ -53,6 +53,7 @@ function createSpeechyAudio( $post_id){
 	
 }
 add_action('publish_post', 'createSpeechyAudio');
+add_action('publish_page', 'createSpeechyAudio');
 
 /* Success/error notice after post creation/update */
 

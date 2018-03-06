@@ -1,4 +1,62 @@
-
+/* Add media button */
+jQuery(document).ready(function() {
+    var $ = jQuery;
+    if ($('.set_player_logo').length > 0) {
+        if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
+            $(document).on('click', '.set_player_logo', function(e) {
+                e.preventDefault();
+                var button = $(this);
+                /*var id = button.prev();*/
+				
+                wp.media.editor.send.attachment = function(props, attachment) {
+                    /*id.val(attachment.url);*/
+					$('.show_player_logo').html("<img src=" + attachment.url + " style='width: 100px' />");
+					$('.player_logo_value').val( attachment.url );
+					$('.delete_player_logo').html( "delete image" );
+                };
+                wp.media.editor.open(button);
+                return false;
+            });
+			
+			$(document).on('click', '.delete_player_logo', function(e) {
+                e.preventDefault();
+                $('.show_player_logo').html("No image selected");
+				$('.player_logo_value').val( "" );
+				$('.delete_player_logo').html( "" );
+				
+                return false;
+            });
+        }
+    }
+	
+	if ($('.set_player_bg_image').length > 0) {
+        if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
+            $(document).on('click', '.set_player_bg_image', function(e) {
+                e.preventDefault();
+                var button = $(this);
+                /*var id = button.prev();*/
+				
+                wp.media.editor.send.attachment = function(props, attachment) {
+                    /*id.val(attachment.url);*/
+					$('.show_player_bg_image').html("<img src=" + attachment.url + " style='width: 200px' />");
+					$('.player_bg_image_value').val( attachment.url );
+					$('.delete_player_bg_image').html( "delete image" );
+                };
+                wp.media.editor.open(button);
+                return false;
+            });
+			
+			$(document).on('click', '.delete_player_bg_image', function(e) {
+                e.preventDefault();
+                $('.show_player_bg_image').html("No image selected");
+				$('.player_bg_image_value').val( "" );
+				$('.delete_player_bg_image').html( "" );
+				
+                return false;
+            });
+        }
+    }
+});
 /* Color picker for admin page*/
 
 (function( $ ) {

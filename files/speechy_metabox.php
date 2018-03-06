@@ -10,12 +10,36 @@ wp_nonce_field( basename( __FILE__ ), 'speechy_post_class_nonce' ); ?>
 	$get_checkbox = get_post_meta( $post->ID, 'speechy-get-checkbox', true );
 	$get_the_voice = get_post_meta( $post->ID, 'speechy-voice-choice', true );
 	$voice = ($get_the_voice && '' != $get_the_voice ) ? $get_the_voice : VOICE;
+	$process_custom_audio = (get_post_meta( $post->ID, 'process_custom_audio', true )) ? get_post_meta( $post->ID, 'process_custom_audio', true ) : SPEECHY_AD;
 	?>
- 
+  
+  <p>
+  <?php
+	global $post;
+	$audio_attachments = get_posts( array(
+		'post_type' => 'attachment',
+		'post_mime_type' => 'audio'
+	) );
+	
+	?>
+	<select name="process_custom_audio">
+		<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3</option>
+		<?php
+		foreach ( $audio_attachments as $post ) {
+			setup_postdata( $post ); 
+			?>
+			<option value="<?php echo wp_get_attachment_url(); ?>" <?php if( $process_custom_audio== wp_get_attachment_url() ) { echo "SELECTED";} ?>><?php the_title(); ?></option>
+			<?php
+		}
+		wp_reset_postdata();
+	?>
+	</select>
+	</p>
+
   <p>
     <label for="speechy-post-class"><?php _e( "Speechy checkbox", 'peechy' ); ?></label>
 		<p><?php _e( "By default, speechy will create an MP3 file for each post. If you DON'T want this MP3 file to be created, check the following checkbox", 'speechy' ); ?>.</p>
-    <input type="checkbox" name="speechy-get-checkbox" id="speechy-get-checkbox" value="checked" <?=$get_checkbox; ?>> <?php _e( "Please, don't create an MP3 file with this post. Thanks!", 'speechy' ); ?>
+    <input type="checkbox" name="speechy-get-checkbox" id="speechy-get-checkbox" value="checked" <?= $get_checkbox; ?>> <?php _e( "Please, don't create an MP3 file with this post. Thanks!", 'speechy' ); ?>
   </p> 
   
   <p>
@@ -104,7 +128,7 @@ function speechy_add_post_meta_boxes() {
     'speechy-post-class',      // Unique ID
     esc_html__( 'Speechy optional settings', 'Speechy' ),    // Title
     'speechy_post_class_meta_box',   // Callback function
-    'post',         // Admin page (or post type)
+    array('post', 'page'),        // Admin page (or post type)
     'normal',         // Context
     'high'         // Priority
   );
@@ -131,16 +155,33 @@ function speechy_save_post_class_meta( $post_id, $post ) {
   $new_checkbox = ( isset( $_POST['speechy-get-checkbox'] ) ? $_POST['speechy-get-checkbox'] : '' );
   $new_meta_value = ( isset( $_POST['speechy-post-class'] ) ? $_POST['speechy-post-class'] : '' );
   $voice_choice = ( isset($_POST['speechy-voice-choice']) ? $_POST['speechy-voice-choice'] : '' );
-
+  $new_voice_choice = ( isset($_POST['process_custom_audio']) ? $_POST['process_custom_audio'] : '' );
+  
   /* Get the meta key. */
   $checkbox_key = 'speechy-get-checkbox';
   $meta_key = 'speechy_post_class';
   $voice_key = 'speechy-voice-choice';
+  $custom_audio_key = 'process_custom_audio';
   
   /* Get the meta value of the custom field key. */
-  $checkbox_value = get_post_meta( $post_id, $checkbox_key, true );
+  $checkbox_value = get_post_meta( $post_id, $custom_audio_key, true );
   $meta_value = get_post_meta( $post_id, $meta_key, true );
   $voice_value = get_post_meta( $post_id, $voice_key, true );
+  $custom_audio_value = get_post_meta( $post_id, $custom_audio_key, true );
+  
+  /* Custom audio value */
+  /* If a new meta value was added and there was no previous value, add it. */
+  if ( $new_voice_choice && '' == $custom_audio_value ){
+    add_post_meta( $post_id, $custom_audio_key, $new_voice_choice, true );
+
+  /* If the new meta value does not match the old value, update it. */
+  }elseif( $new_voice_choice && $new_voice_choice != $custom_audio_value ){
+    update_post_meta( $post_id, $custom_audio_key, $new_voice_choice );
+
+  /* If there is no new meta value but an old value exists, delete it. */
+  }elseif( '' == $new_voice_choice && $custom_audio_value ){
+    delete_post_meta( $post_id, $custom_audio_key, $custom_audio_value );
+  }
   
   /* Checkbox value */
   /* If a new meta value was added and there was no previous value, add it. */
