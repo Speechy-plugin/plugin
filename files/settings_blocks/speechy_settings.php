@@ -280,14 +280,6 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 	</p>
 	*/ ?>
 	
-	<?php
-	global $post;
-	$audio_attachments = get_posts( array(
-		'post_type' => 'attachment',
-		'post_mime_type' => 'audio'
-	) );
-	
-	?>
 	<select name="speechy_settings[process_custom_audio]">
 		<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3 added</option>
 		<?php

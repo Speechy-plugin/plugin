@@ -5,14 +5,7 @@ $list = $speechyApi->getMp3List();
 $list = $list['data']['mp3list'];
 ?>
 
-<?php 
-	$action = isset($_REQUEST['action'])?$_REQUEST['action']:false;
-	if($action === "mp3upload"){
-		var_dump($_FILES);die;
-	}
-?>
-
-<h2><?php echo __("Upload Mp3" , "speechy"); ?></h2>
+<h2><?php echo __("Upload Audio" , "speechy"); ?></h2>
 <div class="mp3prepend">
 	<div class="form">
 		<form action="?page=speechy-plugin&tab=mp3prepend" method="post" enctype="multipart/form-data">
@@ -30,7 +23,7 @@ $list = $list['data']['mp3list'];
 			<table class="table">
 				<tr>
 					<th>No.</th>
-					<th>Name</th>
+					<th>Audio Name</th>
 					<th></th>
 				</tr>
 				<?php $c = 1;?>
@@ -46,7 +39,7 @@ $list = $list['data']['mp3list'];
 				<?php endforeach;?>
 			</table>
 		<?php else:?>
-			<h4>No Mp3 found.</h4>
+			<h4>No Audio found.</h4>
 		<?php endif;?>
 	</div>
 </div>

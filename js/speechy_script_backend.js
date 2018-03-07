@@ -56,6 +56,17 @@ jQuery(document).ready(function() {
             });
         }
     }
+	
+	jQuery("#prepmp3type").change(function(){
+		jQuery("#prepboxmp3").hide();
+		jQuery("#prepboxtext").hide();
+		var type = jQuery("#prepmp3type").val();
+		if(type == 'mp3')
+			jQuery("#prepboxmp3").show();
+		else if(type == 'text')
+			jQuery("#prepboxtext").show();
+	});
+	jQuery("#prepmp3type").change();
 });
 /* Color picker for admin page*/
 

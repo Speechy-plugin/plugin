@@ -7,6 +7,16 @@ function createSpeechyAudio( $post_id){
 	$create_mp3_choice = isset($_REQUEST['speechy-get-checkbox']) ? $_REQUEST['speechy-get-checkbox'] : "";
 	update_post_meta( $post_id, 'speechy-get-checkbox', $create_mp3_choice );
 	
+	$prepmp3type = isset($_REQUEST['prepmp3type']) ? $_REQUEST['prepmp3type'] : "";
+	update_post_meta( $post_id, 'prepmp3type', $prepmp3type );
+	
+	$prepmp3id = isset($_REQUEST['prepmp3id']) ? $_REQUEST['prepmp3id'] : "";
+	update_post_meta( $post_id, 'prepmp3id', $prepmp3id );
+	
+	$preptext = isset($_REQUEST['preptext']) ? $_REQUEST['preptext'] : "";
+	update_post_meta( $post_id, 'preptext', $preptext );
+	
+	
 	if( $create_mp3_choice == "checked"){
 		// WE DON'T CREATE AN MP3 FILE.
 		update_post_meta( $post_id, 'mp3_ready', 0);
@@ -40,7 +50,12 @@ function createSpeechyAudio( $post_id){
 		// ** SpeechyAPi
 		$callbackUrl = get_site_url()."/speechy_callback";
 		$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
-		$resp = $speechyApi->createAudio($post_id, $content, $voice, $callbackUrl);
+		if($prepmp3type == 'mp3')
+			$resp = $speechyApi->createAudio($post_id, $content, $voice, $callbackUrl, SpeechyAPi::PREPENDTYPE_MP3, $prepmp3id);
+		elseif ($prepmp3type == 'text')
+			$resp = $speechyApi->createAudio($post_id, $content, $voice, $callbackUrl, SpeechyAPi::PREPENDTYPE_TEXT, false, $preptext);
+		else
+			$resp = $speechyApi->createAudio($post_id, $content, $voice, $callbackUrl);
 		
 		$is_success = $resp['error'] == 0; // if status is 200 then its a success response.
 		//file_put_contents(get_home_path()."/tst.txt" ,$content."\n\n\n".print_r($resp, true));

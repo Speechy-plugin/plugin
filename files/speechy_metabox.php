@@ -11,36 +11,52 @@ wp_nonce_field( basename( __FILE__ ), 'speechy_post_class_nonce' ); ?>
 	$get_the_voice = get_post_meta( $post->ID, 'speechy-voice-choice', true );
 	$voice = ($get_the_voice && '' != $get_the_voice ) ? $get_the_voice : VOICE;
 	$process_custom_audio = (get_post_meta( $post->ID, 'process_custom_audio', true )) ? get_post_meta( $post->ID, 'process_custom_audio', true ) : SPEECHY_AD;
+	$get_prepmp3type = get_post_meta( $post->ID, 'prepmp3type', true);
+	$get_prepmp3id = get_post_meta( $post->ID, 'prepmp3id', true );
+	if($get_prepmp3id === "")
+		$get_prepmp3id = $process_custom_audio; //default audio selected in settings
+	$get_preptext = get_post_meta( $post->ID, 'preptext', true );
 	?>
   
-  <p>
-  <?php
-	global $post;
-	$audio_attachments = get_posts( array(
-		'post_type' => 'attachment',
-		'post_mime_type' => 'audio'
-	) );
-	
-	?>
-	<select name="process_custom_audio">
-		<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3</option>
-		<?php
-		foreach ( $audio_attachments as $post ) {
-			setup_postdata( $post ); 
-			?>
-			<option value="<?php echo wp_get_attachment_url(); ?>" <?php if( $process_custom_audio== wp_get_attachment_url() ) { echo "SELECTED";} ?>><?php the_title(); ?></option>
-			<?php
-		}
-		wp_reset_postdata();
-	?>
-	</select>
-	</p>
 
   <p>
     <label for="speechy-post-class"><?php _e( "Speechy checkbox", 'peechy' ); ?></label>
 		<p><?php _e( "By default, speechy will create an MP3 file for each post. If you DON'T want this MP3 file to be created, check the following checkbox", 'speechy' ); ?>.</p>
     <input type="checkbox" name="speechy-get-checkbox" id="speechy-get-checkbox" value="checked" <?= $get_checkbox; ?>> <?php _e( "Please, don't create an MP3 file with this post. Thanks!", 'speechy' ); ?>
   </p> 
+  
+  <div>
+  	<label for="speechy-post-class"><?php _e( "Prepend", 'speechy' ); ?></label>
+  	<p><?php _e( "By default, prepending is mp3 which you configure in setting page. You can also prepend text by selection prepending type as text.", 'speechy' ); ?>.</p>
+  	<select id="prepmp3type" name="prepmp3type">
+  		<option value="0" <?=($get_prepmp3type == '0'?"selected":"")?>>No Prepend</option>
+  		<option value="mp3" <?=($get_prepmp3type == 'mp3'?"selected":"")?>>Audio</option>
+  		<option value="text" <?=($get_prepmp3type == 'text'?"selected":"")?>>Text</option>
+  	</select>
+  	<p>
+  	<div id="prepboxmp3">
+	  	<select name="prepmp3id">
+			<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3 added</option>
+			<?php
+				$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
+				$list = $speechyApi->getMp3List();
+				$list = $list['data']['mp3list'];
+			foreach ( $list as $mp3 ) {
+				?>
+				<option value="<?php echo $mp3['id']; ?>" <?php if( $get_prepmp3id== $mp3['id'] ) { echo "SELECTED";} ?>><?= $mp3['name']; ?></option>
+				<?php
+			}
+		?>
+		</select>
+	</div>
+	</p>
+	<p>
+	<div id="prepboxtext">
+		<textarea rows="4" name="preptext" style="width: 100%"><?=$get_preptext?></textarea>
+	</div>
+	</p>
+	
+  </div>
   
   <p>
     <label for="speechy-post-class"><?php _e( "Speechy text version", 'peechy' ); ?></label>
