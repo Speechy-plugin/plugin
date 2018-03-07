@@ -291,13 +291,14 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 	<select name="speechy_settings[process_custom_audio]">
 		<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3 added</option>
 		<?php
-		foreach ( $audio_attachments as $post ) {
-			setup_postdata( $post ); 
+			$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
+			$list = $speechyApi->getMp3List();
+			$list = $list['data']['mp3list'];
+		foreach ( $list as $mp3 ) {
 			?>
-			<option value="<?php echo wp_get_attachment_url(); ?>" <?php if( $process_custom_audio== wp_get_attachment_url() ) { echo "SELECTED";} ?>><?php the_title(); ?></option>
+			<option value="<?php echo $mp3['id']; ?>" <?php if( $process_custom_audio== $mp3['id'] ) { echo "SELECTED";} ?>><?= $mp3['name']; ?></option>
 			<?php
 		}
-		wp_reset_postdata();
 	?>
 	</select>
 
