@@ -35,8 +35,9 @@ wp_nonce_field( basename( __FILE__ ), 'speechy_post_class_nonce' ); ?>
   	</select>
   	<p>
   	<div id="prepboxmp3">
-	  	<select name="prepmp3id">
+	  	<select id="prepmp3id" name="prepmp3id">
 			<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3 added</option>
+			<option value="1">Upload New Audio</option>
 			<?php
 				$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
 				$list = $speechyApi->getMp3List();
@@ -48,6 +49,17 @@ wp_nonce_field( basename( __FILE__ ), 'speechy_post_class_nonce' ); ?>
 			}
 		?>
 		</select>
+		<div id="prepboxmp3upload" style="margin-top: 10px;" class="mp3prepend">
+			<div class="form">
+				<form id="prepboxmp3uploadform" action="?page=speechy-plugin&tab=mp3prepend" method="post" enctype="multipart/form-data">
+					<label for="prepmp3name">File Name</label>
+					<input name="prepmp3name" type="text"/>
+					<label for="prepmp3file">Mp3 File (Max. size is 8MB)</label>
+					<input name="prepmp3file" type="file"/>
+					<input id="prepboxmp3uploadformsubmit" type="button" class="button button-primary" value="Upload"/>
+				</form>
+			</div>
+		</div>
 	</div>
 	</p>
 	<p>
