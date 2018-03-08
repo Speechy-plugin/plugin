@@ -1,8 +1,12 @@
 
+.entry-content a, .entry-summary a, .widget a, .site-footer .widget-area a, .posts-navigation a, .widget_authors a strong {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
 .single .speechy_mp3,
 .page .speechy_mp3 {
 	padding: 1px;
-	margin: 10px 0;
+	margin: 0 0 10px 0;
 	background: #FFF;
 }
 
@@ -97,6 +101,10 @@
 
 .remove {
 	display: none !important;
+}
+
+.show_player_bg_image {
+	margin: 0 0 10px 0;
 }
 
 /* Player */ 

@@ -4,22 +4,19 @@
 
 $speechy_border = $options_player['player-border'];
 $speechy_border_color = $options_player['border-color'];
-$speechy_bg_color = $options_player['bg-color'];
-$speechy_bg = esc_url( get_theme_mod( 'speechy_bg' ) );
+$speechy_bg_color = (isset($options_player['bg-color']) && $options_player['bg-color'] != '0') ? 'background: '.$options_player['bg-color'].' !important;'  : '';
+$player_padding = (isset($options_player['player-logo']) && $options_player['player-logo'] != '' ) ? "" : "padding: 5px !important;";
 
-if(isset($speechy_bg) && $speechy_bg != "") {
-	$speechy_bg_image =  'background: url("' . $speechy_bg.'") !important;';
-}else{
-	$speechy_bg_image = (isset($options_player['bg-image']) && $options_player['bg-image'] != '0') ? 'background: url("' . plugins_url( ).'/speechy/images/background-'.$options_player['bg-image'].'.jpg") !important;'  : '';
-}
+$speechy_bg = $options_player['player-bg-image'];
+$speechy_bg_image = (isset($speechy_bg) && $speechy_bg != '') ? 'background: url("'.$speechy_bg.'") !important;'  : '';
 
 $speechy_text_color = $options_player['text-color'];
 $speechy_title_color = $options_player['title-color'];
 $speechy_player_title = $options_player['speechy_player_title'];
-
+	
 define('PLAYER_BORDER', $speechy_border);
-define('PLAYER_BORDER_COLOR', $speechy_border_color);
-
+define('PLAYER_PADDING', $player_padding);
+define('PLAYER_BG_COLOR', $speechy_bg_color);
 define('PLAYER_BG_COLOR', $speechy_bg_color);
 define('PLAYER_BG_IMAGE', $speechy_bg_image);
 define('PLAYER_TITLE_COLOR', $speechy_title_color);
@@ -30,8 +27,9 @@ define('PLAYER_TITLE', $speechy_player_title);
 function styl_func(){
 	echo'<style>
 	.speechy_mp3 {
-		border: ' . PLAYER_BORDER . 'px dotted '. PLAYER_BORDER_COLOR .' !important;
-		background:'. PLAYER_BG_COLOR .'!important;
+		' . PLAYER_PADDING .'
+		border: ' . PLAYER_BORDER . 'px solid '. PLAYER_BORDER_COLOR .' !important;
+		'. PLAYER_BG_COLOR .'
 		' . PLAYER_BG_IMAGE .'
 	}
 

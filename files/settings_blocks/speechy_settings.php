@@ -129,7 +129,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 
 	<table class="table yourplan">		
 		<tr>
-			<td class="<?= $class_notice_conversion; ?>"><?php echo __("MP3 conversions" , "speechy"); ?></td>
+			<td class="<?= $class_notice_conversion; ?>"><?php echo __("MP3 conversions this month" , "speechy"); ?></td>
 			<td><span class="<?= $planclassconv; ?>"><?= $mp3UpdateCount; ?></span> / <?= MP3UPDATELIMIT; ?></td>
 		</tr>
 		<tr>

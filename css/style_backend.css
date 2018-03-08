@@ -154,11 +154,21 @@
 	
 }
 
-#speechy_player_settings  label {
+#speechy_player_settings label {
     display: block;
-	margin: 10px 0;
+	margin: 0;
     font-size: 1.2em;
     font-weight: 500;
+	width: 250px;
+}
+
+#speechy_player_settings .delete_player_bg_image,
+#speechy_player_settings .delete_player_logo {
+	color: red;
+    font-weight: 600;
+    margin: 5px 0 0 15px;
+    display: inline-block;
+	cursor: pointer;
 }
 
 /* boxes in post */
