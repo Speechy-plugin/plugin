@@ -27,6 +27,53 @@ function player_register_settings(){
 	register_setting('player_settings', 'player_settings', 'player_settings_validate');
 }
 
+add_action('admin_init', 'mp3prepend_setting');
+add_action( 'wp_ajax_mp3prepend_setting','mp3prepend_setting' );
+add_action('wp_ajax_nopriv_mp3prepend_setting', 'mp3prepend_setting');
+function mp3prepend_setting(){
+	$action = isset($_REQUEST['action'])?$_REQUEST['action']:false;
+	if($action === "mp3upload"){
+		$name = $_REQUEST['mp3name'];
+		$filename = $_FILES['mp3file']['tmp_name'];
+		$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
+		$resp = $speechyApi->addMp3($name, $filename);
+		header("Location: ?page=speechy-plugin&tab=mp3prepend");
+	}
+	elseif($action === "mp3uploadajax"){
+		$name = $_REQUEST['mp3name'];
+		$filename = $_FILES['mp3file']['tmp_name'];
+		$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
+		$resp = $speechyApi->addMp3($name, $filename);
+		if($resp['error'] == '0'){
+			$id = $resp['data']['id']; 
+			$list = $speechyApi->getMp3List();
+			$list = $list['data']['mp3list'];
+			$html = '';
+			$html .= '<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3 added</option>';
+			$html .= '<option value="1">Upload New Audio</option>';
+			
+			foreach ( $list as $mp3 ) {
+				$html .= '<option value="'.$mp3['id'].'" ' . ($mp3['id'] == $id?'selected':'') . '>'.$mp3['name'].'</option>';
+			}
+			echo json_encode(array("html"=>$html, "id"=>$id, "error"=>0));
+		}
+		else {
+			echo json_encode($resp);
+		}
+		exit();
+	}
+	elseif($action === "mp3remove"){
+		$id = isset($_REQUEST['id'])?$_REQUEST['id']:false;
+		if($id){
+			$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
+			$resp = $speechyApi->deleteMp3($id);
+		}
+		
+		header("Location: ?page=speechy-plugin&tab=mp3prepend");
+	}
+}
+
+
 function speechy_settings_validate($args){
     //make sure you return the args
     return $args;
@@ -52,6 +99,7 @@ function speechy_options(){ ?>
 		<a href="?page=speechy-plugin&tab=how_to" class="nav-tab <?php echo $active_tab == 'how_to' ? 'nav-tab-active' : ''; ?>">How to use Speechy</a>
 		<?php if(ID_KEY != ''){ ?>
 			<a href="?page=speechy-plugin&tab=player_settings" class="nav-tab <?php echo $active_tab == 'player_settings' ? 'nav-tab-active' : ''; ?>">MP3 Player Style</a>
+			<a href="?page=speechy-plugin&tab=mp3prepend" class="nav-tab <?php echo $active_tab == 'mp3prepend' ? 'nav-tab-active' : ''; ?>">Audio Prepend</a>
 			<a href="?page=speechy-plugin&tab=voice_samples" class="nav-tab <?php echo $active_tab == 'voice_samples' ? 'nav-tab-active' : ''; ?>">Voice Samples</a>
 			<a href="?page=speechy-plugin&tab=payments_history" class="nav-tab <?php echo $active_tab == 'payments_history' ? 'nav-tab-active' : ''; ?>">Payments Info</a>
 			<a href="?page=speechy-plugin&tab=contact" class="nav-tab <?php echo $active_tab == 'contact' ? 'nav-tab-active' : ''; ?>">Contact Me!</a>
@@ -67,7 +115,11 @@ function speechy_options(){ ?>
 		<?php } elseif( $active_tab == 'player_settings' ) { ?>
 		
 			<?php include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/player_settings.php' ); ?>
+		
+		<?php } elseif( $active_tab == 'mp3prepend' ) { ?>
 			
+			<?php include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/mp3prepend.php' ); ?>
+		
 		<?php } elseif( $active_tab == 'payments_history' ) { ?>
 			
 			<?php include_once( plugin_dir_path( __FILE__ ) . '/settings_blocks/payments_history.php' ); ?>

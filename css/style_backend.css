@@ -179,6 +179,26 @@
 	margin: 0 0 5px 0;
 }
 
+
+/* Mp3 Prepend Listing*/
+.mp3prepend{
+	
+}
+
+.mp3prepend .form{
+	
+}
+
+.mp3prepend .form label{
+	display: block;
+    margin: 10px 0;
+}
+
+.mp3prepend .form input{
+	display: block;
+    margin: 10px 0;
+}
+
 /* popup iframe */
 
 #TB_iframeContent {

@@ -56,6 +56,66 @@ jQuery(document).ready(function() {
             });
         }
     }
+	
+	jQuery("#prepmp3type").change(function(){
+		jQuery("#prepboxmp3").hide();
+		jQuery("#prepboxtext").hide();
+		var type = jQuery("#prepmp3type").val();
+		if(type == 'mp3')
+			jQuery("#prepboxmp3").show();
+		else if(type == 'text')
+			jQuery("#prepboxtext").show();
+		jQuery("#prepmp3id").change();
+	});
+	jQuery("#prepmp3id").change(function(){
+		if(jQuery("#prepmp3id").val() == "1")
+			jQuery("#prepboxmp3upload").show();
+		else
+			jQuery("#prepboxmp3upload").hide();
+	});
+	jQuery("#prepmp3type").change();
+	
+	
+	jQuery("#prepboxmp3uploadformsubmit").click(function (e) {
+
+        var supporttitle = jQuery('.support-title').val();
+        var prepmp3name = jQuery('input[name=prepmp3name]').val();
+        var prepmp3file = jQuery('input[name=prepmp3file]').prop('files')[0];
+
+        var form_data = new FormData();
+
+        form_data.append('action', 'mp3uploadajax');
+        form_data.append('mp3name', prepmp3name);
+        form_data.append('mp3file', prepmp3file);
+        jQuery("#prepboxmp3uploadformsubmit").attr("disabled", true);
+        jQuery("#prepboxmp3uploadformsubmit").val("Uploading");
+        jQuery.ajax({
+            url: 'admin-ajax.php',
+            type: 'post',
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function (response) {
+            	jQuery("#prepboxmp3uploadformsubmit").attr("disabled", false);
+            	jQuery("#prepboxmp3uploadformsubmit").val("Upload")
+            	if(response.error == 0){
+            		jQuery("#prepmp3id").html(response.html);
+            		jQuery('input[name=prepmp3name]').val('');
+            		jQuery('input[name=prepmp3file]').val('');
+            		jQuery("#prepboxmp3upload").hide();
+            	}
+            	else
+            		alert(response.message);
+            },  
+            error: function (response) {
+             console.log('error');
+             jQuery("#prepboxmp3uploadformsubmit").val("Upload")
+             jQuery("#prepboxmp3uploadformsubmit").attr("disabled", false);
+            }
+
+        });
+    });
 });
 /* Color picker for admin page*/
 
