@@ -41,6 +41,7 @@ jQuery(document).ready(function() {
 					$('.show_player_bg_image').html("<img src=" + attachment.url + " style='width: 200px' />");
 					$('.player_bg_image_value').val( attachment.url );
 					$('.delete_player_bg_image').html( "delete image" );
+					$('.set_player_logo').val("Set Player Logo");
                 };
                 wp.media.editor.open(button);
                 return false;
@@ -51,6 +52,7 @@ jQuery(document).ready(function() {
                 $('.show_player_bg_image').html("No image selected");
 				$('.player_bg_image_value').val( "" );
 				$('.delete_player_bg_image').html( "" );
+				$('.delete_player_bg_image').html( "delete image" );
 				
                 return false;
             });
