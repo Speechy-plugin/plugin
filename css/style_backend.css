@@ -30,11 +30,23 @@
 }
 	
 #speechy_id_key, #speechy_secret_key {
-	width: 600px;
+	width: 550px;
 }
 	
 #speechy-update-information td h4 {
 	display: none;
+}
+
+#speechy_licence_form td:first-child {
+	width: 250px;
+}
+
+#speechy_licence_form label {
+	display: block;
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 500;
+    width: 250px;
 }
 
 .speechy_block_left {
@@ -97,13 +109,14 @@
 
 .table td span,
 .speechy .speechy_block_left h3 span {
-	font-size: 30px;
+	font-size: 24px;
 }
 
 .player_settings input[type=radio] {
 	vertical-align: top;
 }
-.player_settings td {
+.player_settings td,
+#speechy_licence_form td {
 	padding: 10px;
 	vertical-align: top;
 }
@@ -163,7 +176,8 @@
 }
 
 #speechy_player_settings .delete_player_bg_image,
-#speechy_player_settings .delete_player_logo {
+#speechy_player_settings .delete_player_logo,
+#speechy_licence_form .delete_speechy_itunes_image {
 	color: red;
     font-weight: 600;
     margin: 5px 0 0 15px;

@@ -99,7 +99,7 @@ function speechy_options(){ ?>
 		<a href="?page=speechy-plugin&tab=how_to" class="nav-tab <?php echo $active_tab == 'how_to' ? 'nav-tab-active' : ''; ?>">How to use Speechy</a>
 		<?php if(ID_KEY != ''){ ?>
 			<a href="?page=speechy-plugin&tab=player_settings" class="nav-tab <?php echo $active_tab == 'player_settings' ? 'nav-tab-active' : ''; ?>">MP3 Player Style</a>
-			<a href="?page=speechy-plugin&tab=mp3prepend" class="nav-tab <?php echo $active_tab == 'mp3prepend' ? 'nav-tab-active' : ''; ?>">Audio Prepend</a>
+			<a href="?page=speechy-plugin&tab=mp3prepend" class="nav-tab <?php echo $active_tab == 'mp3prepend' ? 'nav-tab-active' : ''; ?>">Prepended Audio Message</a>
 			<a href="?page=speechy-plugin&tab=voice_samples" class="nav-tab <?php echo $active_tab == 'voice_samples' ? 'nav-tab-active' : ''; ?>">Voice Samples</a>
 			<a href="?page=speechy-plugin&tab=payments_history" class="nav-tab <?php echo $active_tab == 'payments_history' ? 'nav-tab-active' : ''; ?>">Payments Info</a>
 			<a href="?page=speechy-plugin&tab=contact" class="nav-tab <?php echo $active_tab == 'contact' ? 'nav-tab-active' : ''; ?>">Contact Me!</a>

@@ -29,6 +29,7 @@ jQuery(document).ready(function() {
         }
     }
 	
+	/* Player background Image */
 	if ($('.set_player_bg_image').length > 0) {
         if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
             $(document).on('click', '.set_player_bg_image', function(e) {
@@ -53,6 +54,37 @@ jQuery(document).ready(function() {
 				$('.player_bg_image_value').val( "" );
 				$('.delete_player_bg_image').html( "" );
 				$('.delete_player_bg_image').html( "delete image" );
+				
+                return false;
+            });
+        }
+    }
+	
+	/* Itunes Image */
+	if ($('.set_speechy_itunes_image').length > 0) {
+        if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {
+            $(document).on('click', '.set_speechy_itunes_image', function(e) {
+                e.preventDefault();
+                var button = $(this);
+                /*var id = button.prev();*/
+				
+                wp.media.editor.send.attachment = function(props, attachment) {
+                    /*id.val(attachment.url);*/
+					$('.show_speechy_itunes_image').html("<img src=" + attachment.url + " style='width: 200px' />");
+					$('.speechy_itunes_image_value').val( attachment.url );
+					$('.delete_speechy_itunes_image').html( "delete image" );
+					$('.set_player_logo').val("Set Player Logo");
+                };
+                wp.media.editor.open(button);
+                return false;
+            });
+			
+			$(document).on('click', '.delete_speechy_itunes_image', function(e) {
+                e.preventDefault();
+                $('.show_speechy_itunes_image').html("No image selected");
+				$('.speechy_itunes_image_value').val( "" );
+				$('.delete_speechy_itunes_image').html( "" );
+				$('.delete_speechy_itunes_image').html( "delete image" );
 				
                 return false;
             });

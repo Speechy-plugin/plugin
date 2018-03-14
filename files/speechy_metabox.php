@@ -20,16 +20,15 @@ wp_nonce_field( basename( __FILE__ ), 'speechy_post_class_nonce' ); ?>
   
 
   <p>
-    <label for="speechy-post-class"><?php _e( "Speechy checkbox", 'peechy' ); ?></label>
-		<p><?php _e( "By default, speechy will create an MP3 file for each post. If you DON'T want this MP3 file to be created, check the following checkbox", 'speechy' ); ?>.</p>
-    <input type="checkbox" name="speechy-get-checkbox" id="speechy-get-checkbox" value="checked" <?= $get_checkbox; ?>> <?php _e( "Please, don't create an MP3 file with this post. Thanks!", 'speechy' ); ?>
+    <label for="speechy-post-class"><?php _e( "Don't Convert this post into an MP3 file", 'peechy' ); ?></label>
+		<p><?php _e( "By default, speechy will create an MP3 file for each post. If you DON'T want this MP3 file to be created, check the following checkbox", 'speechy' ); ?>: <input type="checkbox" name="speechy-get-checkbox" id="speechy-get-checkbox" value="checked" <?= $get_checkbox; ?>></p>
   </p> 
   
   <div>
-  	<label for="speechy-post-class"><?php _e( "Prepend", 'speechy' ); ?></label>
-  	<p><?php _e( "By default, prepending is mp3 which you configure in setting page. You can also prepend text by selection prepending type as text.", 'speechy' ); ?>.</p>
+  	<label for="speechy-post-class"><?php _e( "Prepended Audio Message", 'speechy' ); ?></label>
+  	<p><?php _e( "Here you can add a Welcome or Sponsorship message that will be prepended to your main post MP3 file.<br />You can choose 'Audio' and select an MP3 file from the dropdown menu, or choose 'Text' to write a message that will be converted into an MP3 and prepended to your main post", 'speechy' ); ?>.</p>
   	<select id="prepmp3type" name="prepmp3type">
-  		<option value="0" <?=($get_prepmp3type == '0'?"selected":"")?>>No Prepend</option>
+  		<option value="0" <?=($get_prepmp3type == '0'?"selected":"")?>>No message prepended</option>
   		<option value="mp3" <?=($get_prepmp3type == 'mp3'?"selected":"")?>>Audio</option>
   		<option value="text" <?=($get_prepmp3type == 'text'?"selected":"")?>>Text</option>
   	</select>
@@ -71,7 +70,7 @@ wp_nonce_field( basename( __FILE__ ), 'speechy_post_class_nonce' ); ?>
   </div>
   
   <p>
-    <label for="speechy-post-class"><?php _e( "Speechy text version", 'peechy' ); ?></label>
+    <label for="speechy-post-class"><?php _e( "Speechy Audio Version", 'peechy' ); ?></label>
 		<p><?php _e( "We recommend you to use this text field to adapt your post content to the audio file version", 'speechy' ); ?>.<br />
 		<?php _e( "This version will only be used to create the audio file, and not shown on your post page.", 'speechy' ); ?><br />
 		<?php _e( "You can use <a href='http://docs.aws.amazon.com/polly/latest/dg/supported-ssml.html#break-tag' target='_blank'> Amazon Polly tags</a> to adapt your text.", 'speechy' ); ?></p>

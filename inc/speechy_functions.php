@@ -53,15 +53,30 @@ function my_plugin_action_links( $links ) {
 }
 
 // Deactivate default MediaElement.js styles by WordPress
+/*
 function remove_mediaelement_styles() {
         wp_dequeue_style('wp-mediaelement');
         wp_deregister_style('wp-mediaelement');
 }
 add_action( 'wp_print_styles', 'remove_mediaelement_styles' );
 
-/* Add media button (see also in js file) */
+// Add media button (see also in js file)
+
 add_action ( 'admin_enqueue_scripts', function () {
 		if (is_admin ())
 			wp_enqueue_media ();
 	} 
 );
+*/
+
+// Custom RSS Feeds
+
+add_action('init', 'speechyRSS');
+function speechyRSS(){
+        add_feed('speechy', 'speechyRSSFunc');
+}
+
+function speechyRSSFunc(){
+        //get_template_part('rss', 'speechy');
+		require_once dirname( __FILE__ ) . '/rss-speechy.php';
+}

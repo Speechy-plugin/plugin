@@ -104,7 +104,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 ?>
 <?php add_thickbox(); ?>
 
-<h2><?php echo __("Subscription Info" , "speechy"); ?></h2>
+<h3><?php echo __("Subscription Info" , "speechy"); ?></h3>
 
 <?php
 if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null !== HOSTINGLIMIT){
@@ -114,7 +114,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 		if($plan_id == "free"){ 
 			echo "You have <span>".FREEPLANVALIDITY."</span> days left on your free trial"; } 
 		else {
-			echo __("Your current plan is:" , "speechy") . "<span>" . $plan . "</span>";	
+			echo __("Your current plan is:" , "speechy") . " <span>" . $plan . "</span>";	
 		}   
 		?>
 		(<a href='javascript:void()' class="open_iframe" onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = msg;});' ><?php echo __('Upgrade', 'speechy'); ?></a>)</h3>
@@ -170,130 +170,222 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 	}
 	?>
 		
-	<h3><?php echo __("Licence settings" , "speechy"); ?></h3>
+	<h3><?php echo __("Licence Settings" , "speechy"); ?></h3>
 	
-	<label for="key"><?php echo __("ID key" , "speechy"); ?></label>
-	<input type="text" id="speechy_id_key" class="" name="speechy_settings[speechy_id_key]" value="<?php echo (isset($options['speechy_id_key']) && $options['speechy_id_key'] != '') ? $options['speechy_id_key'] : ''; ?>" placeholder="" />
-	
-	<label for="key"><?php echo __("Secret key" , "speechy"); ?></label>
-	<input type="text" id="speechy_secret_key" class="" name="speechy_settings[speechy_secret_key]" value="<?php echo (isset($options['speechy_secret_key']) && $options['speechy_secret_key'] != '') ? $options['speechy_secret_key'] : ''; ?>" placeholder="" />
-	
-	<div class="iframe_block">
-		<button class="close_iframe"><span>X</span> Close window</button>
-		<iframe name="theFrame" class="signup_iframe"></iframe>
-	</div>
+	<table>
+		<tr>
+			<td><label for="key"><?php echo __("ID key" , "speechy"); ?></label></td>
+			<td><input type="text" id="speechy_id_key" class="" name="speechy_settings[speechy_id_key]" value="<?php echo (isset($options['speechy_id_key']) && $options['speechy_id_key'] != '') ? $options['speechy_id_key'] : ''; ?>" placeholder="" /></td>
+		</tr>
+		<tr>
+			<td><label for="key"><?php echo __("Secret key" , "speechy"); ?></label></td>
+			<td><input type="text" id="speechy_secret_key" class="" name="speechy_settings[speechy_secret_key]" value="<?php echo (isset($options['speechy_secret_key']) && $options['speechy_secret_key'] != '') ? $options['speechy_secret_key'] : ''; ?>" placeholder="" /></td>
+		</tr>
+	</table>
+
 	
 <?php if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){ ?>
+
+	<h3><?php echo __("Speechy Settings" , "speechy"); ?></h3>
 	
 	<?php $position = (isset($options['position']) && $options['position'] != '') ? $options['position'] : 'Before'; ?>
 	
-	<h3>Player position</h3>
-	<select name="speechy_settings[position]">
-		<option value="Before" <?php if($position== 'Before') { echo "SELECTED";} ?>>Before the post content</option>
-		<option value="After" <?php if($position== 'After') { echo "SELECTED";} ?>>After the post content</option>
-	</select>
-	
-	<h3><?php echo __("Choose your Voice/Language" , "speechy"); ?></h3>
-	<label for="speech_voice"><?php echo __("Change your favorite voice" , "speechy"); ?> (<?php echo __("You can later change it on the post edit page" , "speechy"); ?>)</label>
+	<table>
+		<tr>
+			<td><label><?php echo __("Player position" , "speechy"); ?></label></td>
+			<td>
+				<select name="speechy_settings[position]">
+					<option value="Before" <?php if($position== 'Before') { echo "SELECTED";} ?>>Before the post content</option>
+					<option value="After" <?php if($position== 'After') { echo "SELECTED";} ?>>After the post content</option>
+				</select>
+			</td>
+		</tr>
+	</table>
 	
 	<?php $voice = (isset($options['voice']) && $options['voice'] != '') ? $options['voice'] : ''; ?>
+	
+	<table>
+		<tr>
+			<td>
+				<label for="speech_voice"><?php echo __("Default voice" , "speechy"); ?></label>
+				(<?php echo __("It can later be changed on the post edit page" , "speechy"); ?>)<br />
+				You can listen to voice examples <a href="?page=speechy-plugin&tab=voice_samples">here</a>
+			</td>
+			<td>
+				<select name="speechy_settings[voice]">
+					<optgroup label="English (US) (en-US)">
+						<option value="Joanna" <?php if($voice== 'Joanna') { echo "SELECTED";} ?>>Joanna - Female - US</option>
+						<option value="Joey" <?php if($voice== 'Joey') { echo "SELECTED";} ?>>Joey - Male - US</option>
+						<option value="Kendra" <?php if($voice== 'Kendra') { echo "SELECTED";} ?>>Kendra - Female - US</option>
+						<option value="Kimberly" <?php if($voice== 'Kimberly') { echo "SELECTED";} ?>>Kimberly - Female - US</option>
+						<option value="Matthew" <?php if($voice== 'Matthew') { echo "SELECTED";} ?>>Matthew - Male - US</option>
+						<option value="Salli" <?php if($voice== 'Salli') { echo "SELECTED";} ?>>Salli - Female - US</option>
+						<option value="Ivy" <?php if($voice== 'Ivy') { echo "SELECTED";} ?>>Ivy - Female child voice - US</option>
+						<option value="Justin" <?php if($voice== 'Justin') { echo "SELECTED";} ?>>Justin - Male child voice - US</option>
+					</optgroup>
+					<optgroup label="English (British) (en-GB)">
+						<option value="Amy" <?php if($voice== 'Amy') { echo "SELECTED";} ?>>Amy - Female - UK</option>
+						<option value="Brian" <?php if($voice== 'Brian') { echo "SELECTED";} ?>>Brian - Male - UK</option>
+						<option value="Emma" <?php if($voice== 'Emma') { echo "SELECTED";} ?>>Emma - Female - UK</option>
+					</optgroup>
+					  
+					  <optgroup label="Español (Castellano) (es-ES)">
+						<option value="Conchita" <?php if($voice== 'Conchita') { echo "SELECTED";} ?>>Conchita - Mujer - ES</option>
+						<option value="Enrique" <?php if($voice== 'Enrique') { echo "SELECTED";} ?>>Enrique - Hombre - ES</option>
+					  </optgroup>
+					  <optgroup label="Français (fr-FR)">
+						<option value="Celine" <?php if($voice== 'Celine') { echo "SELECTED";} ?>>Céline - Femme - FR</option>
+						<option value="Mathieu" <?php if($voice== 'Mathieu') { echo "SELECTED";} ?>>Mathieu - Homme - FR</option>
+					  </optgroup>
+					  <optgroup label="French (Canadian) (fr-CA))">
+						<option value="Chantal" <?php if($voice== 'Chantal') { echo "SELECTED";} ?>>Chantal - Femmme - fr-CA</option>
+					  </optgroup>
+					  <optgroup label="English (Australian) (en-AU)">
+						<option value="Nicole" <?php if($voice== 'Nicole') { echo "SELECTED";} ?>>Nicole - Female - en-AU</option>
+						<option value="Russell" <?php if($voice== 'Russell') { echo "SELECTED";} ?>>Russell - Male - en-AU</option>
+					  </optgroup>
+					  <optgroup label="English (Indian) (en-IN)">
+						<option value="Aditi" <?php if($voice== 'Aditi') { echo "SELECTED";} ?>>Aditi - Female - en-IN</option>
+						<option value="Raveena" <?php if($voice== 'Raveena') { echo "SELECTED";} ?>>Raveena - Female - en-IN</option>
+					  </optgroup>
+					  <optgroup label="Portuguese (Brazilian) (pt-BR)">
+						<option value="Ricardo" <?php if($voice== 'Ricardo') { echo "SELECTED";} ?>>Ricardo - Male - pt-BR</option>
+						<option value="Vitoria" <?php if($voice== 'Vitoria') { echo "SELECTED";} ?>>Vitória - Female - pt-BR</option>
+					  </optgroup>
+					   <optgroup label="Portuguese (European) (pt-PT)">
+						<option value="Cristiano" <?php if($voice== 'Cristiano') { echo "SELECTED";} ?>>Cristiano - Male - pt-PT</option>
+						<option value="Ines" <?php if($voice== 'Ines') { echo "SELECTED";} ?>>Inês - Female - pt-PT</option>
+					  </optgroup>
+					  <optgroup label="German (de-DE)">
+						<option value="Hans" <?php if($voice== 'Hans') { echo "SELECTED";} ?>>Hans - Male - DE</option>
+						<option value="Marlene" <?php if($voice== 'Marlene') { echo "SELECTED";} ?>>Marlene - Female - DE</option>
+						<option value="Vicki" <?php if($voice== 'Vicki') { echo "SELECTED";} ?>>Vicki - Female - DE</option>
+					  </optgroup>
+					  <optgroup label="Russian (ru-RU)">
+						<option value="Maxim" <?php if($voice== 'Maxim') { echo "SELECTED";} ?>>Maxim - Male - RU</option>
+						<option value="Tatyana" <?php if($voice== 'Tatyana') { echo "SELECTED";} ?>>Tatyana - Female - RU</option>
+					  </optgroup>
+					  <optgroup label="Danish (da-DK)">
+						<option value="Mads" <?php if($voice== 'Mads') { echo "SELECTED";} ?>>Mads - Male - DK</option>
+						<option value="Naja" <?php if($voice== 'Naja') { echo "SELECTED";} ?>>Naja - Female - DK</option>
+					  </optgroup>
+					  <optgroup label="Dutch (nl-NL)">
+						<option value="Lotte" <?php if($voice== 'Lotte') { echo "SELECTED";} ?>>Lotte - Female - NL</option>
+						<option value="Ruben" <?php if($voice== 'Ruben') { echo "SELECTED";} ?>>Ruben - Male - NL</option>
+					  </optgroup>
+				</select>
+			</td>
+		</tr>
+	</table>
 
-	<?php
-	//Voice list: http://docs.aws.amazon.com/polly/latest/dg/voicelist.html
-	// Doc: https://docs.aws.amazon.com/polly/latest/dg/API_Voice.html
-	?>
-	
-	<select name="speechy_settings[voice]">
-				<optgroup label="English (US) (en-US)">
-					
-					<option value="Joanna" <?php if($voice== 'Joanna') { echo "SELECTED";} ?>>Joanna - Female - US</option>
-					<option value="Joey" <?php if($voice== 'Joey') { echo "SELECTED";} ?>>Joey - Male - US</option>
-					<option value="Kendra" <?php if($voice== 'Kendra') { echo "SELECTED";} ?>>Kendra - Female - US</option>
-					<option value="Kimberly" <?php if($voice== 'Kimberly') { echo "SELECTED";} ?>>Kimberly - Female - US</option>
-					<option value="Matthew" <?php if($voice== 'Matthew') { echo "SELECTED";} ?>>Matthew - Male - US</option>
-					<option value="Salli" <?php if($voice== 'Salli') { echo "SELECTED";} ?>>Salli - Female - US</option>
-					<option value="Ivy" <?php if($voice== 'Ivy') { echo "SELECTED";} ?>>Ivy - Female child voice - US</option>
-					<option value="Justin" <?php if($voice== 'Justin') { echo "SELECTED";} ?>>Justin - Male child voice - US</option>
-				</optgroup>
-				<optgroup label="English (British) (en-GB)">
-					<option value="Amy" <?php if($voice== 'Amy') { echo "SELECTED";} ?>>Amy - Female - UK</option>
-					<option value="Brian" <?php if($voice== 'Brian') { echo "SELECTED";} ?>>Brian - Male - UK</option>
-					<option value="Emma" <?php if($voice== 'Emma') { echo "SELECTED";} ?>>Emma - Female - UK</option>
-				</optgroup>
-				  
-				  <optgroup label="Español (Castellano) (es-ES)">
-					<option value="Conchita" <?php if($voice== 'Conchita') { echo "SELECTED";} ?>>Conchita - Mujer - ES</option>
-					<option value="Enrique" <?php if($voice== 'Enrique') { echo "SELECTED";} ?>>Enrique - Hombre - ES</option>
-				  </optgroup>
-				  <optgroup label="Français (fr-FR)">
-					<option value="Celine" <?php if($voice== 'Celine') { echo "SELECTED";} ?>>Céline - Femme - FR</option>
-					<option value="Mathieu" <?php if($voice== 'Mathieu') { echo "SELECTED";} ?>>Mathieu - Homme - FR</option>
-				  </optgroup>
-				  <optgroup label="French (Canadian) (fr-CA))">
-					<option value="Chantal" <?php if($voice== 'Chantal') { echo "SELECTED";} ?>>Chantal - Femmme - fr-CA</option>
-				  </optgroup>
-				  <optgroup label="English (Australian) (en-AU)">
-					<option value="Nicole" <?php if($voice== 'Nicole') { echo "SELECTED";} ?>>Nicole - Female - en-AU</option>
-					<option value="Russell" <?php if($voice== 'Russell') { echo "SELECTED";} ?>>Russell - Male - en-AU</option>
-				  </optgroup>
-				  <optgroup label="English (Indian) (en-IN)">
-					<option value="Aditi" <?php if($voice== 'Aditi') { echo "SELECTED";} ?>>Aditi - Female - en-IN</option>
-					<option value="Raveena" <?php if($voice== 'Raveena') { echo "SELECTED";} ?>>Raveena - Female - en-IN</option>
-				  </optgroup>
-				  <optgroup label="Portuguese (Brazilian) (pt-BR)">
-					<option value="Ricardo" <?php if($voice== 'Ricardo') { echo "SELECTED";} ?>>Ricardo - Male - pt-BR</option>
-					<option value="Vitoria" <?php if($voice== 'Vitoria') { echo "SELECTED";} ?>>Vitória - Female - pt-BR</option>
-				  </optgroup>
-				   <optgroup label="Portuguese (European) (pt-PT)">
-					<option value="Cristiano" <?php if($voice== 'Cristiano') { echo "SELECTED";} ?>>Cristiano - Male - pt-PT</option>
-					<option value="Ines" <?php if($voice== 'Ines') { echo "SELECTED";} ?>>Inês - Female - pt-PT</option>
-				  </optgroup>
-				  <optgroup label="German (de-DE)">
-					<option value="Hans" <?php if($voice== 'Hans') { echo "SELECTED";} ?>>Hans - Male - DE</option>
-					<option value="Marlene" <?php if($voice== 'Marlene') { echo "SELECTED";} ?>>Marlene - Female - DE</option>
-					<option value="Vicki" <?php if($voice== 'Vicki') { echo "SELECTED";} ?>>Vicki - Female - DE</option>
-				  </optgroup>
-				  <optgroup label="Russian (ru-RU)">
-					<option value="Maxim" <?php if($voice== 'Maxim') { echo "SELECTED";} ?>>Maxim - Male - RU</option>
-					<option value="Tatyana" <?php if($voice== 'Tatyana') { echo "SELECTED";} ?>>Tatyana - Female - RU</option>
-				  </optgroup>
-				  <optgroup label="Danish (da-DK)">
-					<option value="Mads" <?php if($voice== 'Mads') { echo "SELECTED";} ?>>Mads - Male - DK</option>
-					<option value="Naja" <?php if($voice== 'Naja') { echo "SELECTED";} ?>>Naja - Female - DK</option>
-				  </optgroup>
-				  <optgroup label="Dutch (nl-NL)">
-					<option value="Lotte" <?php if($voice== 'Lotte') { echo "SELECTED";} ?>>Lotte - Female - NL</option>
-					<option value="Ruben" <?php if($voice== 'Ruben') { echo "SELECTED";} ?>>Ruben - Male - NL</option>
-				  </optgroup>
-
-	</select>
-	<h4>Tips: You can listen to all available voices <a href="?page=speechy-plugin&tab=voice_samples">here</a></h4>
-	
-	<h3><?php echo __("Default Welcome or sponsorship message to your audio posts" , "speechy"); ?></h3>
-	<label for="speech_voice">Choose an MP3 file from the droplist or upload an new MP3 form the <a href="<?php echo get_site_url(); ?>/wp-admin/upload.php">media page</a></label>
-	
 	<?php $process_custom_audio = (isset($options['process_custom_audio']) && $options['process_custom_audio'] != '') ? $options['process_custom_audio'] : ''; ?>
-	<?php /*
-	<p>
-		<input type="text" value="<?= $process_custom_audio; ?>" class="process_custom_images" id="speechy_settings[process_custom_audio]" name="speechy_settings[process_custom_audio]" >
-		<button class="set_custom_audio button">Select Audio Intro</button>
-	</p>
-	*/ ?>
 	
-	<select name="speechy_settings[process_custom_audio]">
-		<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3 added</option>
-		<?php
-			$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
-			$list = $speechyApi->getMp3List();
-			$list = $list['data']['mp3list'];
-		foreach ( $list as $mp3 ) {
-			?>
-			<option value="<?php echo $mp3['id']; ?>" <?php if( $process_custom_audio== $mp3['id'] ) { echo "SELECTED";} ?>><?= $mp3['name']; ?></option>
-			<?php
-		}
-	?>
-	</select>
+	<table>
+		<tr>
+			<td>
+				<label for="speech_voice"><?php echo __("Default prepend welcome or sponsorship message" , "speechy"); ?>*</label>
+			</td>
+			<td>
+				<select name="speechy_settings[process_custom_audio]">
+					<option value="0" <?php if( $process_custom_audio== "0" ) { echo "SELECTED";} ?>>No MP3 added</option>
+					<?php
+						$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
+						$list = $speechyApi->getMp3List();
+						$list = $list['data']['mp3list'];
+					foreach ( $list as $mp3 ) {
+						?>
+						<option value="<?php echo $mp3['id']; ?>" <?php if( $process_custom_audio== $mp3['id'] ) { echo "SELECTED";} ?>><?= $mp3['name']; ?></option>
+						<?php
+					}
+					?>
+				</select>
+				<p>Upload a <a href="?page=speechy-plugin&tab=mp3prepend">new MP3</a>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">* This message will be played before the main audio file.<br />You can select another message on the post edit page, or just choose to write the message on a normal text field.</td>
+		</tr>
+	</table>
 
+	<?php $speechy_itunes_image = (isset($options['speechy_itunes_image']) && $options['speechy_itunes_image'] != '') ? $options['speechy_itunes_image'] : ''; ?>
+	
+	<h3><?php echo __("Speechy Podcast" , "speechy"); ?></h3>
+	
+	<p>Speechy podcast RSS: <a href="<?= site_url(); ?>/feed/speechy" target="_blank"><?= site_url(); ?>/feed/speechy</a></p>
+
+	<p>Submit your Speechy podcast to iTunes iConnect here: <a href="https://podcastsconnect.apple.com/" target="_blank">https://podcastsconnect.apple.com/</a></p>
+	<table>
+		<tr>
+			<td>
+				<label for="player-bg-image"><?php  echo __("Itunes Image" , "speechy"); ?></label>
+				<?php echo __("Suggested dimensions","speechy"); ?>: 1400 by 1400 pixels.
+			</td>
+			<td>
+				<div class="show_speechy_itunes_image">
+					<?php
+					if($speechy_itunes_image != "") { echo "<img src='".$speechy_itunes_image."' style='height: 100px' />";}
+					?>
+				</div>
+				<input type="hidden" class="speechy_itunes_image_value" name="speechy_settings[speechy_itunes_image]" value="<?= $speechy_itunes_image; ?>">
+				<input type="button" class="set_speechy_itunes_image button" value="<?php if($speechy_itunes_image != "") { echo "Change"; }else{ echo "Set"; } ?> Itunes Image" name="speechy_settings[speechy_itunes_image]">
+				<?php if($speechy_itunes_image != "") echo "<span class='delete_speechy_itunes_image'>Remove image</span>"; ?>
+			</td>
+		</tr>
+		
+		<?php $speechy_itunes_category = (isset($options['speechy_itunes_category']) && $options['speechy_itunes_category'] != '') ? $options['speechy_itunes_category'] : ''; ?>
+		<tr>
+			<td>
+				<label for="speechy_itunes_category"><?php  echo __("Itunes Category" , "speechy"); ?></label>
+			</td>
+			<td>
+				<select name="speechy_settings[speechy_itunes_category]" id="speechy_itunes_category">
+					<option value="Arts" <?php if($speechy_itunes_category == "Arts"){ echo "SELECTED";} ?> >Arts</option>
+					<option value="Business" <?php if($speechy_itunes_category == "Business"){ echo "SELECTED";} ?>>Business</option>
+					<option value="Comedy" <?php if($speechy_itunes_category == "Comedy"){ echo "SELECTED";} ?>>Comedy</option>
+					<option value="Education" <?php if($speechy_itunes_category == "Education"){ echo "SELECTED";} ?>>Education</option>
+					<option value="Games &amp; Hobbies" <?php if($speechy_itunes_category == "Games &amp; Hobbies"){ echo "SELECTED";} ?>>Games &amp; Hobbies</option>
+					<option value="Government &amp; Organizations" <?php if($speechy_itunes_category == "Government &amp; Organizations"){ echo "SELECTED";} ?>>Government &amp; Organizations</option>
+					<option value="Health" <?php if($speechy_itunes_category == "Health"){ echo "SELECTED";} ?>>Health</option>
+					<option value="Kids" <?php if($speechy_itunes_category == "Kids"){ echo "SELECTED";} ?>>Kids</option>
+					<option value="Music"<?php if($speechy_itunes_category == "Music"){ echo "SELECTED";} ?> >Music</option>
+					<option value="News &amp; Politics"<?php if($speechy_itunes_category == "News &amp; Politics"){ echo "SELECTED";} ?> >News &amp; Politics</option>
+					<option value="Religion" <?php if($speechy_itunes_category == "Religion"){ echo "SELECTED";} ?>>Religion</option>
+					<option value="Science &amp; Medicine" <?php if($speechy_itunes_category == "Science &amp; Medicine"){ echo "SELECTED";} ?>>Science &amp; Medicine</option>
+					<option value="Society &amp; Culture" <?php if($speechy_itunes_category == "Society &amp; Culture"){ echo "SELECTED";} ?>>Society &amp; Culture</option>
+					<option value="Sports &amp; Recreation" <?php if($speechy_itunes_category == "Sports &amp; Recreation"){ echo "SELECTED";} ?>>Sports &amp; Recreation</option>
+					<option value="Technology" <?php if($speechy_itunes_category == "Technology"){ echo "SELECTED";} ?>>Technology</option>
+					<option value="TV &amp; Film" <?php if($speechy_itunes_category == "TV &amp; Film"){ echo "SELECTED";} ?>>TV &amp; Film</option>
+				</select>
+			</td>
+		</tr>
+		
+		<?php $speechy_itunes_email = (isset($options['speechy_itunes_email']) && $options['speechy_itunes_email'] != '') ? $options['speechy_itunes_email'] : 'No'; ?>
+		<tr>
+			<td>
+				<label for="speechy_itunes_email"><?php  echo __("iTunes contact email" , "speechy"); ?></label>
+				
+			</td>
+			<td>
+				<input type="text" id="speechy_itunes_email" class="" name="speechy_settings[speechy_itunes_email]" value="<?php echo (isset($options['speechy_itunes_email']) && $options['speechy_itunes_email'] != '') ? $options['speechy_itunes_email'] : ''; ?>" placeholder="" />
+			</td>
+		</tr>
+		
+		<?php $speechy_itunes_explicit = (isset($options['speechy_itunes_explicit']) && $options['speechy_itunes_explicit'] != '') ? $options['speechy_itunes_explicit'] : 'No'; ?>
+		<tr>
+			<td>
+				<label for="speechy_itunes_explicit"><?php  echo __("iTunes explicit content" , "speechy"); ?></label>
+				
+			</td>
+			<td>
+				<select name="speechy_settings[speechy_itunes_explicit]" id="speechy_itunes_explicit">
+					<option value="yes" <?php if($speechy_itunes_explicit == "yes"){ echo "SELECTED";} ?>>Yes</option>
+					<option value="clean" <?php if($speechy_itunes_explicit == "clean"){ echo "SELECTED";} ?>>Clean</option>
+					<option value="no" <?php if($speechy_itunes_explicit == "no"){ echo "SELECTED";} ?>>No</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+	
 <?php } else { ?>
 		<h3>How to sign up with Speechy?</h3>
 		<p>To make speechy work properly, you need to:</p>
@@ -307,8 +399,3 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 <?php } ?> 
 	<?php submit_button(); ?>
 </form>
-
-<?php if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){ ?>
-	<h3><?php echo __("MP3 player settings" , "speechy"); ?></h3>
-	<p><?php echo __("You can select the design of the player" , "speechy"); ?> <a href="?page=speechy-plugin&tab=player_settings"><?php echo __("Here" , "speechy"); ?></a>.</p>
-<?php } ?>
