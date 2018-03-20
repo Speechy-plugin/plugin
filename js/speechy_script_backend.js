@@ -1,5 +1,18 @@
 /* Add media button */
 jQuery(document).ready(function() {
+	
+	/* CHAT OPTION */
+	var sPath=window.location.pathname.substring(1) + window.location.search;
+	var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+	var sOption = sPath.substring(sPath.lastIndexOf('?') + 1);
+	var sPlugin = sPath.substring(sPath.lastIndexOf('=') + 1);
+	
+	if(sPlugin === "speechy-plugin"){
+		(function(){ var widget_id = 'xFqosHXMzb';var d=document;var w=window;function l(){var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+	}
+	/* END CHAT OPTION */
+
+	
     var $ = jQuery;
     if ($('.set_player_logo').length > 0) {
         if ( typeof wp !== 'undefined' && wp.media && wp.media.editor) {

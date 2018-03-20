@@ -58,6 +58,14 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 2.1 =
+* Adding the prepend file functionality within the setting page and the post edit page.
+* Reorganizing the setting pages.
+* Adding Speechy RSS.
+* Adding fields for the Itunes RSS feed.
+* Modifying Speechy player.
+* Modyfing styling.
+
 = 2.0 =
 * Changes in the preparation of the text before MP3 conversion.
 * Small changes in the settings and CSS pages.

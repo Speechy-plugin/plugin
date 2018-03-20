@@ -359,7 +359,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 			</td>
 		</tr>
 		
-		<?php $speechy_itunes_email = (isset($options['speechy_itunes_email']) && $options['speechy_itunes_email'] != '') ? $options['speechy_itunes_email'] : 'No'; ?>
+		<?php $speechy_itunes_email = (isset($options['speechy_itunes_email']) && $options['speechy_itunes_email'] != '') ? $options['speechy_itunes_email'] : ''; ?>
 		<tr>
 			<td>
 				<label for="speechy_itunes_email"><?php  echo __("iTunes contact email" , "speechy"); ?></label>

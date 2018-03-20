@@ -13,8 +13,9 @@ function speechy_scripts($hook) {
 	// Add the color picker css file       
     wp_enqueue_style( 'wp-color-picker' ); 
          
-        // Include our custom jQuery file with WordPress Color Picker dependency
-        //wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+    // Include JS PLAYER
+	wp_register_script( 'jplayer_js', plugins_url( '/js/jquery.jplayer.min.js', dirname(__FILE__)), array( 'jquery'), null, true );
+	wp_enqueue_script( 'jplayer_js' );
 	
 }
 add_action('wp_enqueue_scripts', 'speechy_scripts');

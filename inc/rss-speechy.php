@@ -8,6 +8,45 @@ $posts = query_posts('showposts=' . $postCount);
 header('Content-Type: ' . feed_content_type('rss2') . '; charset=' . get_option('blog_charset'), true);
 $more = 1;
 
+$plugins_url = plugins_url();
+
+// Site infos
+$site_title = get_bloginfo( 'name' );
+$site_url = network_site_url( '/' );
+$site_description = get_bloginfo( 'description' );
+$admin_email = get_bloginfo( 'admin_email' );
+// END Site infos
+
+// Speechy Itunes default image
+$speechy_itunes_default_image = $site_url . "images/speechy_logo_1400x1400px.jpg";
+
+// Player options
+$options = get_option( 'speechy_settings' );
+
+$speechy_itunes_image = (isset($options['speechy_itunes_image']) && $options['speechy_itunes_image'] != '') ? $options['speechy_itunes_image'] : $speechy_itunes_default_image;
+$speechy_itunes_category = (isset($options['speechy_itunes_category']) && $options['speechy_itunes_category'] != '') ? $options['speechy_itunes_category'] : '';
+$speechy_itunes_email = (isset($options['speechy_itunes_email']) && $options['speechy_itunes_email'] != '') ? $options['speechy_itunes_email'] : $admin_email;
+$speechy_itunes_explicit = (isset($options['speechy_itunes_explicit']) && $options['speechy_itunes_explicit'] != '') ? $options['speechy_itunes_explicit'] : 'No';
+// END Player options
+
+// Get copyright
+/*public function get_copyright() {
+		$all_posts  = get_posts( 'post_status=publish&order=ASC' );
+		$first_post = $all_posts[0];
+		$first_date = $first_post->post_date_gmt;
+
+		$copyright = 'Copyright &copy; ';
+		if ( substr( $first_date, 0, 4 ) === date( 'Y' ) ) {
+			$copyright .= date( 'Y' );
+		} else {
+			$copyright .= substr( $first_date, 0, 4 ) . '-' . date( 'Y' );
+		}
+		$copyright .= ' ' . get_bloginfo( 'name' );
+
+		$copyright = $this->filter_force_html_decode( $copyright );
+		return $copyright;
+}*/
+// END Get copyright
 echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>';
 
 /**
@@ -37,29 +76,28 @@ do_action( 'rss_tag_pre', 'rss2' );
 	 */
 	do_action( 'rss2_ns' );
 	?>
->
 
 <channel>
 	<title><?php wp_title_rss(); ?></title>
 	<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
-	<link><?php bloginfo_rss('url') ?></link>
-	<description><?php bloginfo_rss("description") ?></description>
+	<link><?php bloginfo_rss('url'); ?></link>
+	<description><?php bloginfo_rss("description"); ?></description>
 	<image>
-		<url>http://speechy.io/test2/wp-content/uploads/2018/02/cropped-pexels-photo-414620.jpeg</url>
-		<title>My Blog</title>
-		<link>https://speechy.io/test2</link>
+		<url><?= $speechy_itunes_image; ?></url>
+		<title><?php wp_title_rss(); ?></title>
+		<link><?= $site_url; ?></link>
 	</image>
 	<itunes:owner>
-		<itunes:name>My Blog</itunes:name>
-		<itunes:email>info@test.com</itunes:email>
+		<itunes:name><?= $site_title; ?></itunes:name>
+		<itunes:email><?= $speechy_itunes_email; ?></itunes:email>
 	</itunes:owner>
 	<itunes:category text="Business"></itunes:category>
-	<itunes:explicit>yes</itunes:explicit>
-	<itunes:image href="http://speechy.io/test2/wp-content/uploads/2018/02/cropped-pexels-photo-414620.jpeg"/>
-	<itunes:author>My Blog</itunes:author>
-	<itunes:summary>My WordPress Blog</itunes:summary>
-	<itunes:subtitle>My WordPress Blog</itunes:subtitle>
-	<copyright>Copyright © 2018 My Blog</copyright>
+	<itunes:explicit><?= $speechy_itunes_explicit; ?></itunes:explicit>
+	<itunes:image href="<?= $speechy_itunes_image; ?>"/>
+	<itunes:author><?= $site_title; ?></itunes:author>
+	<itunes:summary><?php bloginfo_rss("description"); ?></itunes:summary>
+	<itunes:subtitle><?php bloginfo_rss("description"); ?></itunes:subtitle>
+	<copyright></copyright>
 	<lastBuildDate><?php
 		$date = get_lastpostmodified( 'GMT' );
 		echo $date ? mysql2date( 'r', $date, false ) : date( 'r' );
@@ -100,43 +138,25 @@ do_action( 'rss_tag_pre', 'rss2' );
 	do_action( 'rss2_head');
 
 	while( have_posts()) : the_post();
+	
+	global $post;
+	$post_id = get_the_ID();
+		//$audio_file      = $amazon_pollycast->get_audio_file_location( get_the_ID() );
+		//$categories_list = $amazon_pollycast->get_itunes_categories( get_the_ID() );
+		$audio_file = get_post_meta( $post_id, 'mp3_url', true );
 	?>
-	<item>
-		<title><?php the_title_rss() ?></title>
-		<link><?php the_permalink_rss() ?></link>
-<?php if ( get_comments_number() || comments_open() ) : ?>
-		<comments><?php comments_link_feed(); ?></comments>
-<?php endif; ?>
-		<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false); ?></pubDate>
-		<dc:creator><![CDATA[<?php the_author() ?>]]></dc:creator>
-		<?php the_category_rss('rss2') ?>
-
-		<guid isPermaLink="false"><?php the_guid(); ?></guid>
-<?php if (get_option('rss_use_excerpt')) : ?>
-		<description><![CDATA[<?php the_excerpt_rss(); ?>]]></description>
-<?php else : ?>
-		<description><![CDATA[<?php the_excerpt_rss(); ?>]]></description>
-	<?php $content = get_the_content_feed('rss2'); ?>
-	<?php if ( strlen( $content ) > 0 ) : ?>
-		<content:encoded><![CDATA[<?php echo $content; ?>]]></content:encoded>
-	<?php else : ?>
-		<content:encoded><![CDATA[<?php the_excerpt_rss(); ?>]]></content:encoded>
-	<?php endif; ?>
-<?php endif; ?>
-<?php if ( get_comments_number() || comments_open() ) : ?>
-		<wfw:commentRss><?php echo esc_url( get_post_comments_feed_link(null, 'rss2') ); ?></wfw:commentRss>
-		<slash:comments><?php echo get_comments_number(); ?></slash:comments>
-<?php endif; ?>
-<?php rss_enclosure(); ?>
-	<?php
-	/**
-	 * Fires at the end of each RSS2 feed item.
-	 *
-	 * @since 2.0.0
-	 */
-	do_action( 'rss2_item' );
-	?>
-	</item>
+		<item>
+			<title><?php the_title_rss(); ?></title>
+			<link><?php echo esc_url( $audio_file ); ?></link>
+			<pubDate><?php echo esc_html( mysql2date( 'D, d M Y H:i:s +0000', get_post_time( 'Y-m-d H:i:s', true ), false ) ); ?></pubDate>
+			<description><![CDATA[<?php the_excerpt_rss(); ?>]]></description>
+			<enclosure url="<?php echo esc_url( $audio_file ); ?>" length="0" type="audio/mpeg"/>
+			<guid><?php the_guid(); ?></guid>
+			<itunes:author><![CDATA[<?php the_author(); ?>]]></itunes:author>
+			<itunes:summary><![CDATA[<?php the_excerpt_rss(); ?>]]></itunes:summary>
+			<itunes:keywords><![CDATA[<?= $speechy_itunes_category; ?>]]></itunes:keywords>
+			<itunes:explicit><?= $speechy_itunes_explicit; ?></itunes:explicit>
+		</item>
 	<?php endwhile; ?>
 </channel>
 </rss>
