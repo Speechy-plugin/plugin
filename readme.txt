@@ -58,6 +58,9 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 2.2.1 =
+* Adding new player icons
+
 = 2.2 =
 * Changing the player styling
 
