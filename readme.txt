@@ -58,6 +58,9 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 2.2 =
+* Changing the player styling
+
 = 2.1 =
 * Adding the prepend file functionality within the setting page and the post edit page.
 * Reorganizing the setting pages.
