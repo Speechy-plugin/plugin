@@ -16,7 +16,7 @@ $speechy_player_title = $options_player['speechy_player_title'];
 	
 define('PLAYER_BORDER', $speechy_border);
 define('PLAYER_PADDING', $player_padding);
-define('PLAYER_BG_COLOR', $speechy_bg_color);
+define('PLAYER_BORDER_COLOR', $speechy_border_color);
 define('PLAYER_BG_COLOR', $speechy_bg_color);
 define('PLAYER_BG_IMAGE', $speechy_bg_image);
 define('PLAYER_TITLE_COLOR', $speechy_title_color);
