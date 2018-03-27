@@ -1,6 +1,6 @@
 === Speechy ===
 Contributors: speechy, nicozz
-Stable tag: 1.0
+Stable tag: 2.2.2
 Tested up to: 4.9
 Requires at least: 4.6
 
@@ -57,6 +57,9 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 	2) Select a voice for a specific post: on the post edit page, inside the Speechy optional setting, you can also change the default voice using the drop down menu.
 
 == Changelog ==
+
+= 2.2.2 =
+* Adding changes to the player default values.
 
 = 2.2.1 =
 * Adding new player icons
