@@ -2,9 +2,9 @@
 // Player style settings
 // border-color";s:7:"#ddb67c";s:8:"bg-color";s:7:"#dd3333";s:10:"text-color";s:7:"#eeee22";s:20:"speechy_player_title";s:20:"Listen to this post:"
 
-$speechy_border = $options_player['player-border'];
-$speechy_border_color = $options_player['border-color'];
-$speechy_bg_color = (isset($options_player['bg-color']) && $options_player['bg-color'] != '0') ? 'background: '.$options_player['bg-color'].' !important;'  : '';
+$speechy_border = (isset($options_player['player-border']) && $options_player['player-border'] != '') ? $options_player['player-border'] : '1';
+$speechy_border_color = (isset($options_player['border-color']) && $options_player['border-color'] != '') ? $options_player['border-color'] : '#808080';
+$speechy_bg_color = (isset($options_player['bg-color']) && $options_player['bg-color'] != '0') ? 'background: '.$options_player['bg-color'].' !important;'  : 'background: #3994b7 !important';
 $player_padding = (isset($options_player['player-logo']) && $options_player['player-logo'] != '' ) ? "" : "padding: 5px !important;";
 
 $speechy_bg = $options_player['player-bg-image'];

@@ -31,8 +31,8 @@ function speechy_find_mp3($content){
 		if ( ! empty( $sp_mp3 ) ) {
 				$custom_content .= '<!-- Audio file powered by Speechy. If you want to convert your post into podcasts, visit us at: https://speechy.io -->';
 				$custom_content .= '<div class="speechy_mp3 '.$position.' clearfix">';
-				$custom_content .= "<small class='powered_by'><a href='https://www.speechy.io/?utm_source=plugin&utm_medium=link&utm_campaign=powered_by' target='_blank' title='Try Speechy' alt='text-to-speech wordpress plugin'><img src='" . plugins_url( 'images/Speechy_icon_logo_32px.png', dirname(__FILE__) ) . "' ></a></small>";
-				$custom_content .= "<small class='download_link'><a href='".$sp_mp3."' title='Download' onclick=\"ga('send', 'event', 'Button', 'Download MP3', 'Users blog', '0');\"> </a></small>";
+				$custom_content .= "<small class='powered_by'><a href='https://www.speechy.io/?utm_source=plugin&utm_medium=link&utm_campaign=powered_by' target='_blank' title='Try Speechy' alt='text-to-speech wordpress plugin'><img src='" . plugins_url( 'images/Sp.png', dirname(__FILE__) ) . "' ></a></small>";
+				$custom_content .= "<small class='download_link'><a href='".$sp_mp3."' title='Download this post' onclick=\"ga('send', 'event', 'Button', 'Download MP3', 'Users blog', '0');\"> </a></small>";
 				
 				if ( isset($player_logo) && $player_logo != '' ) : 
 					$custom_content .= "<img src='" .  $player_logo . "' class='player_image'>";
@@ -41,28 +41,24 @@ function speechy_find_mp3($content){
 						$custom_content .= '<div class="scroll-title">';
 							$custom_content .= '<span class="player_title ' . $show_scrolling . '" style="width: ' . $pixels . 'px; ' . $animation . '">' . $show_title . '</span>';
 						$custom_content .= '</div>';
-						$custom_content .= '<audio id="speechy-player" preload="none" controls>';
-							$custom_content .= '<source type="audio/mpeg" src="' . $sp_mp3 . '">';
-						$custom_content .= '</audio>';
+						$custom_content .= do_shortcode('[audio src="'.$sp_mp3.'"]');
 					$custom_content .= '</div>';
 				else :
 					//$custom_content .= $audio_player;
 					$custom_content .= '<div class="player_without_image">';
 						$custom_content .= '<div class="scroll-title">';
-							$custom_content .= '<span class="player_title" style="' . $pixels . 'px">' . $show_title . '</span>';
+							$custom_content .= '<span class="player_title ' . $show_scrolling . '" style="width: ' . $pixels . 'px; ' . $animation . '">' . $show_title . '</span>';
 						$custom_content .= '</div>';
-						$custom_content .= '<audio id="speechy-player" preload="none" controls>';
-							$custom_content .= '<source type="audio/mpeg" src="' . $sp_mp3 . '">';
-						$custom_content .= '</audio>';
+						$custom_content .= do_shortcode('[audio src="'.$sp_mp3.'"]');
 					$custom_content .= '</div>';
 				endif;
 				$custom_content .= '</div>';
 				$custom_content .= '<!-- END speechy.io -->';
 				
-				if($position === "Before"){
-					$content = $custom_content . $original_content ;
-				}else{
+				if($position === "After"){
 					$content .= $original_content . $custom_content;
+				}else{
+					$content = $custom_content . $original_content;
 				}
 
 			return $content;

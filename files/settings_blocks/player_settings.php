@@ -11,7 +11,6 @@ $options = get_option( 'player_settings' );
 	<?php $player_border = (isset($options['player-border']) && $options['player-border'] != '') ? $options['player-border'] : '0'; ?>
 	<?php $border_color = (isset($options['border-color']) && $options['border-color'] != '') ? $options['border-color'] : '#ddd'; ?>
 	<?php $bg_color = (isset($options['bg-color']) && $options['bg-color'] != '') ? $options['bg-color'] : '#fff'; ?>
-	<?php $text_color = (isset($options['text-color']) && $options['text-color'] != '') ? $options['text-color'] : '#000'; ?>
 	<?php $player_logo = (isset($options['player-logo']) && $options['player-logo'] != '') ? $options['player-logo'] : ''; ?>
 	<?php $player_bg_image = (isset($options['player-bg-image']) && $options['player-bg-image'] != '') ? $options['player-bg-image'] : ''; ?>
 	
@@ -28,10 +27,6 @@ $options = get_option( 'player_settings' );
 		<tr>
 			<td><label for="text-color"><?php  echo __("Player Title Color" , "speechy"); ?></label></td>
 			<td><input type="text" name="player_settings[title-color]" value="<?php echo $title_color; ?>" class="speechy-text-color-picker" ></td>
-		</tr>
-		<tr>
-			<td><label for="text-color"><?php  echo __("Text color" , "speechy"); ?></label></td>
-			<td><input type="text" name="player_settings[text-color]" value="<?php echo $text_color; ?>" class="speechy-text-color-picker" ></td>
 		</tr>
 		<tr>
 			<td><label for="player-border"><?php  echo __("Player Border" , "speechy"); ?></label></td>

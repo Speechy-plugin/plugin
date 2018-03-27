@@ -38,6 +38,8 @@
     right: 0;
 	-webkit-box-shadow: none;
     box-shadow: none;
+	width: 25px;
+	height: 25px;
 }
 	
 .single .speechy_mp3 .powered_by img a,
@@ -55,7 +57,7 @@
 	height: 30px;
 	width: 30px;
 	position: absolute;
-	top: 3px;
+	top: 5px;
 	right: 50px;
 }
 
@@ -104,6 +106,26 @@
 }
 
 /** Player **/ 
+
+/* Player background */
+.mejs-container, .mejs-container .mejs-controls, .mejs-embed, .mejs-embed body {
+    background: transparent !important;
+}
+
+/* Time bar */
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current, .mejs-controls .mejs-time-rail .mejs-time-loaded {
+    border-radius: 5px !important;
+}
+.mejs-controls .mejs-time-rail .mejs-time-current {
+    background: #0073aa;
+    border-radius: 5px !important;
+}
+
+/* Volume */
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current, .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total, .mejs-controls .mejs-time-rail span {
+    border-radius: 5px !important;
+}
+
 #speechy-player {
 	display: block;
 	width: 100%;
@@ -139,6 +161,7 @@
 	width: 80%;
 	height: 30px;
 	margin: 7px 0 10px 0;
+	color: #fff;
 }
 .scroll-title .scroll {
 	position: absolute;
