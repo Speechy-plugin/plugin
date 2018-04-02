@@ -35,3 +35,4 @@ $resp = $speechyApi->getUsage();
 define('HOSTINGLIMIT', $resp['data']['mp3Limit']);
 define('BANDWIDTHLIMIT', $resp['data']['hitLimit']);
 define('MP3UPDATELIMIT', $resp['data']['mp3UpdateLimit']);
+define('MP3PREPENDLIMIT', $resp['data']['mp3PrependLimit']);

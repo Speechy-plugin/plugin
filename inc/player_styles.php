@@ -34,7 +34,7 @@ function styl_func(){
 	}
 
 	.speechy_mp3 .player_title {
-		color:'. PLAYER_TEXT_COLOR .'!important;
+		color:'. PLAYER_TITLE_COLOR .'!important;
 	}
 	
 	.speechy_mp3 .powered_by, .speechy_mp3 .powered_by am, .speechy_mp3 .download_link a {

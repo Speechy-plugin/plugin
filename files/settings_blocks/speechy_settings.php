@@ -3,20 +3,10 @@
 $speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
 $resp = $speechyApi->getUsage();
 
-// print_r($resp);
-
-/* ** Plans ** */
-/*
-free
-blogger-plan
-pro-plan
-premium-plan
-*/
-
 $plan_id = $resp['data']['plan'];
 
 if($plan_id == "free"){
-	$plan =  "14 days Free Trial";
+	$plan =  "14-day Free Trial";
 }else{
 	$plan = str_replace("-", " ", $plan_id);
 	$plan = ucfirst($plan);
@@ -26,11 +16,13 @@ if($plan_id == "free"){
 define('WARNINGMP3', $resp['data']['mp3Limit']);
 define('WARNINGHIT', $resp['data']['hitLimit']);
 define('MP3UPDATELIMIT', $resp['data']['mp3UpdateLimit']);
+define('MP3PREPENDLIMIT', $resp['data']['mp3PrependLimit']);
 
 /* ** Actual consumption ** */
 $mp3Count = $resp['data']['mp3Count'];
 $hitCount = $resp['data']['hitCount'];
 $mp3UpdateCount = $resp['data']['mp3UpdateCount'];
+$mp3PrependCount = $resp['data']['mp3PrependCount'];
 
 if($plan_id == "free"){
 	$freePlanValidity = $resp['data']['freePlanValidity'];
@@ -41,13 +33,15 @@ if($plan_id == "free"){
 $mp3Countreachlimits = HOSTINGLIMIT * 0.9;
 $hitCountreachlimits = BANDWIDTHLIMIT * 0.9;
 $hitConversionsreachlimits = MP3UPDATELIMIT * 0.9;
+$hitPrependreachlimits = MP3PREPENDLIMIT * 0.9;
 
 /* ** Plans limit notice ** */
 $class_notice_mp3 = "none";
 $class_notice_hit = "none";
 $class_notice_conversions = "none";
+$class_notice_prepend = "none";
 
-$planclassmp3 = $planclasshit = $planclassconv = "green";
+$planclassmp3 = $planclasshit = $planclassconv = $planPrependCount = "green";
 
 //get the older values, wont work the first time
 $options = get_option( 'speechy_settings' ); 
@@ -56,9 +50,9 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 	/* MP3 files */
 	if(null !==HOSTINGLIMIT){
 		if($mp3Count > HOSTINGLIMIT){
-		$plan_mp3_limit_notice = _e("<div class='limit_notice red'><h4>You have reached your current plan's maximum MP3 hosting limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ alert(msg);});\">Upgrade your plan here</a> and keep creating more amazing MP3 files for your blog!</h4></div>", "speechy");
+			$plan_mp3_limit_notice = _e("<div class='limit_notice red'><h4>You have reached your current plan's maximum MP3 hosting limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ alert(msg);});\">Upgrade your plan here</a> and keep creating more amazing MP3 files for your blog!</h4></div>", "speechy");
 		
-		$class_notice_mp3 = $planclassmp3 = "red";
+			$class_notice_mp3 = $planclassmp3 = "red";
 		}else{
 			if($mp3Count >= $mp3Countreachlimits){
 				// Congratulations! Your listeners have maxed out your current monthly MP3 play limit. Your blog deserves an upgrade.
@@ -98,6 +92,22 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != ''){
 
 				$class_notice_conversion = $planclassconv = "orange";
 			}
+		}
+	}
+	
+	/* Prepend files */
+	if(null !==HOSTINGLIMIT){
+		if($mp3PrependCount > MP3PREPENDLIMIT){
+			$plan_mp3_limit_notice = _e("<div class='limit_notice red'><h4>You have reached your current plan's maximum prepending MP3 limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ alert(msg);});\">Upgrade your plan here</a> and keep creating more amazing MP3 files for your blog!</h4></div>", "speechy");
+		
+			$class_notice_prepend = $mp3PrependCount = "red";
+		}else{
+			if($mp3PrependCount >= $hitPrependreachlimits){
+				// Congratulations! Your listeners have maxed out your current monthly MP3 play limit. Your blog deserves an upgrade.
+				$plan_mp3_limit_notice = _e("<div class='limit_notice orange'><h4>You will soon reach your current plan's maximum prepending MP3 limits.</h4><h4><a href='javascript:void()' onclick=\"openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });\">Upgrade your plan here</a> and keep up that great work!</h4></div>", "speechy");
+
+				$class_notice_prepend = $planPrependCount = "orange";
+			} 
 		}
 	}
 }
@@ -140,6 +150,11 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 			<td class="<?= $class_notice_hit; ?>"> <?php echo __("MP3 played this month" , "speechy"); ?></td>
 			<td><span class="<?= $planclasshit; ?>"><?= $hitCount; ?></span> / <?= BANDWIDTHLIMIT; ?></td>
 		</tr>
+		
+		<tr>
+			<td class="<?= $class_notice_prepend; ?>"> <?php echo __("MP3 prepended messages" , "speechy"); ?></td>
+			<td><span class="<?= $planPrependCount; ?>"><?= $mp3PrependCount; ?></span> / <?= MP3PREPENDLIMIT; ?></td>
+		</tr>
 	
 	</table>
 	
@@ -149,7 +164,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 	<?php
 }else{
 	?>
-	<div class='limit_notice red'><?php echo __("For Speechy to work properly, you need to enter the ID key and Secret key." , "speechy"); ?><p><a href='javascript:void()' onclick="openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });"><?php echo __("Sign up for a free plan or confirm your credentials here" , "speechy"); ?></a></p></div>
+	<div class='limit_notice red'><?php echo __("For Speechy to work properly, you need to enter the ID key and Secret key." , "speechy"); ?><p><a href='javascript:void()' onclick="openPortal(function(msg){ document.getElementById('updated-msg').innerHTML = msg; });"><?php echo __("Sign up for a 14-day trial free plan or login here" , "speechy"); ?></a></p></div>
 	<?php
 }
 ?>
@@ -164,7 +179,7 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 		
 	?>
 		<div class="notice notice-error">
-			<h3><?php echo __("Important: For Speechy to work properly, you need to enter the ID key and Secret key" , "speechy"); ?>.<br /><a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = msg; });'><?php echo __("Sign up for a free plan here" , "speechy"); ?></a>.</h3>
+			<h3><?php echo __("Important: For Speechy to work properly, you need to enter the ID key and Secret key" , "speechy"); ?>.<br /><a href='javascript:void()' onclick='openPortal(function(msg){ document.getElementById("updated-msg").innerHTML = msg; });'><?php echo __("Sign up for a 14-day trial free plan here" , "speechy"); ?></a>.</h3>
 		</div>
 	<?php
 	}
@@ -304,6 +319,11 @@ if(isset($options['speechy_id_key']) && $options['speechy_id_key'] != '' && null
 		</tr>
 		<tr>
 			<td colspan="2">* This message will be played before the main audio file.<br />You can select another message on the post edit page, or just choose to write the message on a normal text field.</td>
+		</tr>
+		
+		<tr>
+			<td><label for="player_settings"><?php echo __("MP3 Player Styles" , "speechy"); ?></label></td>
+			<td><a href="options-general.php?page=speechy-plugin&tab=player_settings">Change the look of the MP3 player here.</a></td>
 		</tr>
 	</table>
 

@@ -10,6 +10,7 @@
 	margin: 0 0 50px 0;
 	background: #FFF;
 	border-radius: 3px;
+	width: 100% !important;
 }
 
 .single .speechy_mp3 span,
@@ -20,6 +21,7 @@
 .single .speechy_mp3 .mejs-container,
 .page .speechy_mp3 .mejs-container {
 	margin-bottom: 0 !important;
+	width: auto !important;
 }
 
 .single .speechy_mp3 .powered_by,
@@ -124,6 +126,10 @@
 /* Volume */
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current, .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total, .mejs-controls .mejs-time-rail span {
     border-radius: 5px !important;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-current {
+    background: #bdeeef;
 }
 
 #speechy-player {

@@ -185,9 +185,15 @@ var speechyPopup = null;
 var messageupdate = "<p>Success! Your plan has been updated successfully! The change will be effective in about 5 minutes.</p>";
 
 function openPortal(onSubscription){
-	var url = 'https://speechy.io/portal/?TB_iframe=true';
-	//url = 'http://localhost/abportal/?TB_iframe=true';
 	
+	var getspeechystorage = localStorage.getItem("speechy");
+	
+	if(getspeechystorage != ""){
+		var url = 'https://speechy.io/portal/?TB_iframe=true#login';
+	}else{
+		var url = 'https://speechy.io/portal/?TB_iframe=true#signup';
+	}
+
 	var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
 	var eventer = window[eventMethod];
 	var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
@@ -210,6 +216,8 @@ function openPortal(onSubscription){
 		    
 		    tb_remove();
 		}
+		
+		localStorage.setItem("speechy", "1");
 	},false);
 	
 	tb_show('Speechy', url);

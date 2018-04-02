@@ -47,23 +47,6 @@ $options = get_option( 'player_settings' );
 		</tr>
 		<tr>
 			<td>
-				<label for="player-logo"><?php  echo __("Player Logo" , "speechy"); ?></label>
-				<small><?php echo __("Suggested image dimensions","speechy"); ?>: 100 by 100 pixels</small>
-			</td>
-			<td>
-				<div class="show_player_logo">
-					<?php
-					if($player_logo != "") { echo "<img src='".$player_logo."' style='height: 100px' />";}
-					?>
-				</div>
-				<input type="hidden" class="player_logo_value" name="player_settings[player-logo]" value="<?= $player_logo; ?>">
-				<input type="button" class="set_player_logo button" value="<?php if($player_logo != "") { echo "Change"; }else{ echo "Set"; } ?> Player Logo" name="player_settings[player-logo]">
-				<?php if($player_logo != "") echo "<span class='delete_player_logo'>Remove image</span>"; ?>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>
 				<label for="player-bg-image"><?php  echo __("Player Background Image" , "speechy"); ?></label>
 				<small><?php echo __("Suggested image dimensions","speechy"); ?>: 800 by 200 pixels</small>
 			</td>
@@ -78,6 +61,23 @@ $options = get_option( 'player_settings' );
 				<?php if($player_bg_image != "") echo "<span class='delete_player_bg_image'>Remove image</span>"; ?>
 			</td>
 		</tr>
+		<tr>
+			<td>
+				<label for="player-logo"><?php  echo __("Player Logo" , "speechy"); ?></label>
+				<small><?php echo __("Suggested image dimensions","speechy"); ?>: 100 by 100 pixels</small>
+			</td>
+			<td>
+				<div class="show_player_logo">
+					<?php
+					if($player_logo != "") { echo "<img src='".$player_logo."' style='height: 100px' />";}
+					?>
+				</div>
+				<input type="hidden" class="player_logo_value" name="player_settings[player-logo]" value="<?= $player_logo; ?>">
+				<input type="button" class="set_player_logo button" value="<?php if($player_logo != "") { echo "Change"; }else{ echo "Set"; } ?> Player Logo" name="player_settings[player-logo]">
+				<?php if($player_logo != "") echo "<span class='delete_player_logo'>Remove image</span>"; ?>
+			</td>
+		</tr>
+
 	</table>
 	
 	<?php submit_button(); ?>
