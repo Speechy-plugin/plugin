@@ -162,7 +162,7 @@ class SpeechyAPi{
 	public function createAudio($postId, $html, $voice = "Amy", $callbackUrl = false, $prependType = self::PREPENDTYPE_NONE, $prependMp3Id = false, $prependText = false){
 		
 		if($prependType == self::PREPENDTYPE_TEXT && $prependText !== false){
-			$html = "<p>$prependText</p>".$html;
+			$html = "<p>$prependText</p><break time=\"2s\"/>".$html;
 		}
 		
 		$contentList = $this->processAudioToContent($html);
