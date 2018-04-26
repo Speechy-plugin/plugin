@@ -1,6 +1,6 @@
 === Speechy ===
 Contributors: speechy, nicozz
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 Tested up to: 4.9
 Requires at least: 4.6
 
@@ -58,10 +58,12 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 2.2.4 =
+* Small bug issue.
+
 = 2.2.3 =
 * Adding changes to the player settings.
 * Adding preprending values to the Speechy settings.
-
 
 = 2.2.2 =
 * Adding changes to the player default values.
