@@ -44,7 +44,7 @@ include_once( plugin_dir_path( __FILE__ ) . '/files/speechy_admin_page.php' );
 include_once( plugin_dir_path( __FILE__ ) . '/wpse-playlist-master/wpse-playlist.php' );
 
 /* ** ** */
-include_once( plugin_dir_path( __FILE__ ) . '/ajax/increment_played.php' );
+//include_once( plugin_dir_path( __FILE__ ) . '/ajax/increment_played.php' );
 
 
 /* ** Shortcode (To finish)** */

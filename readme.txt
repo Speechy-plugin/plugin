@@ -59,6 +59,9 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 
 == Changelog ==
 
+= 2.2.6 =
+* Little bug.
+
 = 2.2.5 =
 * adding explanatory video
 
