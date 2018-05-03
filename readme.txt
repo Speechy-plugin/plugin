@@ -54,9 +54,13 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 = 6. On the post edit page (optional) =
 
 	1) Adapt your content to audio version: on the post edit page, by default, Speechy will use your main content. But if you need to adapt your content to an audio version, inside the Speechy optional setting, you can change your post content. If this texte area is not empty, speechy will use its content to create the audio version.
-	2) Select a voice for a specific post: on the post edit page, inside the Speechy optional setting, you can also change the default voice using the drop down menu.
+	2) Prepend a audio intro (a greeting to your listeners, an affiliate code you want to promote, etc.) to your main post, by clicking the dropdown "Prepended Audio Message" and selecting "Audio" to upload an MP3 file, or "Text" to write a text that will be read before your main audio post.
+	3) Select a voice for a specific post: on the post edit page, inside the Speechy optional setting, you can also change the default voice using the drop down menu.
 
 == Changelog ==
+
+= 2.2.5 =
+* adding explanatory video
 
 = 2.2.4 =
 * Small bug issue.

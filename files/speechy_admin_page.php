@@ -146,6 +146,11 @@ function speechy_options(){ ?>
 				<h4>Need help?</h4>
 				<ol>
 				<li>Take a look at the How To page <a href="?page=speechy-plugin&tab=how_to">here</a></li>
+				<li>See the following video:
+				<div style="margin: 10px 0">
+				<script src="https://fast.wistia.com/embed/medias/5dpvufsxtg.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><span class="wistia_embed wistia_async_5dpvufsxtg popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:71px;position:relative;width:150px">&nbsp;</span>
+				</div>
+				</li>
 				<li>Send us an email at <a href="mailto:help@speechy.io">help@speechy.io</a></li>
 				<li>Or use the chat box on <a href="https://speechy.io">speechy.io</a>.</li>
 				</ol>
