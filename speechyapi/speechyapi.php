@@ -137,6 +137,11 @@ class SpeechyAPi{
 		return $resp;
 	}
 	
+    public function getListenBytesForEveryPost(){
+	    $resp = $this->_callApi("get-usage", "post", ['type'=>'listenbytes_everypost']);
+	    return $resp;
+	}
+    
 	public function getInvoices(){
 		$resp = $this->_callApi("get-invoices", "post", []);
 		return $resp;
