@@ -137,8 +137,8 @@ class SpeechyAPi{
 		return $resp;
 	}
 	
-    public function getListenBytesForEveryPost(){
-	    $resp = $this->_callApi("get-usage", "post", ['type'=>'listenbytes_everypost']);
+    public function getPostWiseStatus(){
+	    $resp = $this->_callApi("get-usage", "post", ['type'=>'everypost']);
 	    return $resp;
 	}
     
