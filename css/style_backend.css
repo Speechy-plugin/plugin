@@ -3,15 +3,16 @@
 	clear: both;
 }
 
-.wrap.speechy h2 {
+h2,
+.hitcount {
 	font-size: 1.7em;
 }
 
-.wrap.speechy h3 {
+h3 {
 	font-size: 1.4em;
 }
 
-.wrap.speechy h4 {
+h4 {
 	font-size: 1.2em;
 }
 

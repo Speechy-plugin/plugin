@@ -5,6 +5,15 @@
 function speechy_post_class_meta_box( $post ) { 
 
 wp_nonce_field( basename( __FILE__ ), 'speechy_post_class_nonce' ); ?>
+	<?php 
+	$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
+	$count = $speechyApi->getListenBytesForEveryPost(); 
+	$hitCount = $count['data'][$post->ID]['hitCount'];
+
+	echo "<h4>Post listened: <span class='hitcount'>".$hitCount."</span> times.</h4>";
+
+	?>
+ 
   <p>
 	<?php
 	$get_checkbox = get_post_meta( $post->ID, 'speechy-get-checkbox', true );

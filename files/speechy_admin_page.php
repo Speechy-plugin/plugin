@@ -30,6 +30,7 @@ function player_register_settings(){
 add_action('admin_init', 'mp3prepend_setting');
 add_action( 'wp_ajax_mp3prepend_setting','mp3prepend_setting' );
 add_action('wp_ajax_nopriv_mp3prepend_setting', 'mp3prepend_setting');
+
 function mp3prepend_setting(){
 	$action = isset($_REQUEST['action'])?$_REQUEST['action']:false;
 	if($action === "mp3upload"){
@@ -102,7 +103,6 @@ function speechy_options(){ ?>
 			<a href="?page=speechy-plugin&tab=mp3prepend" class="nav-tab <?php echo $active_tab == 'mp3prepend' ? 'nav-tab-active' : ''; ?>">Prepended Audio Message</a>
 			<a href="?page=speechy-plugin&tab=voice_samples" class="nav-tab <?php echo $active_tab == 'voice_samples' ? 'nav-tab-active' : ''; ?>">Voice Samples</a>
 			<a href="?page=speechy-plugin&tab=payments_history" class="nav-tab <?php echo $active_tab == 'payments_history' ? 'nav-tab-active' : ''; ?>">Payments Info</a>
-			<a href="?page=speechy-plugin&tab=contact" class="nav-tab <?php echo $active_tab == 'contact' ? 'nav-tab-active' : ''; ?>">Contact Me!</a>
 		<?php } ?>
 	</h2>
 	

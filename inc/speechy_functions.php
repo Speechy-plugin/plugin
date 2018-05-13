@@ -52,22 +52,38 @@ function my_plugin_action_links( $links ) {
    return $links;
 }
 
-// Deactivate default MediaElement.js styles by WordPress
-/*
-function remove_mediaelement_styles() {
-        wp_dequeue_style('wp-mediaelement');
-        wp_deregister_style('wp-mediaelement');
+/* **  Add Speechy Stats to the posts list page ** */
+add_filter('manage_posts_columns', 'speechy_add_post_columns', 5);
+add_action('manage_posts_custom_column', 'speechy_get_post_column_values', 5, 2);
+add_filter( 'manage_edit-post_sortable_columns', 'speechy_sortable_column' );
+
+// Add new columns
+function speechy_add_post_columns($defaults){
+    // field vs displayed title
+    $defaults['speechy'] = __('Speechy Stats', 'speechy');
+    return $defaults;
 }
-add_action( 'wp_print_styles', 'remove_mediaelement_styles' );
 
-// Add media button (see also in js file)
+// Populate the new columns with values
+function speechy_get_post_column_values($column_name, $postID){
 
-add_action ( 'admin_enqueue_scripts', function () {
-		if (is_admin ())
-			wp_enqueue_media ();
-	} 
-);
-*/
+    if($column_name === 'speechy'){
+		$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
+
+		$count = $speechyApi->getListenBytesForEveryPost(); 
+		$hitCount = $count['data'][$postID]['hitCount'];
+		echo $hitCount;
+
+    }
+}
+
+// Create column sorteable
+function speechy_sortable_column( $columns ) {
+    $columns['speechy'] = 'speechy';
+ 
+    return $columns;
+}
+/* **  END Add Speechy Stats to the posts list page ** */
 
 // Custom RSS Feeds
 
