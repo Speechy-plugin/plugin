@@ -1,6 +1,6 @@
 === Speechy ===
 Contributors: speechy, nicozz
-Stable tag: 2.2.4
+Stable tag: 2.3
 Tested up to: 4.9
 Requires at least: 4.6
 
@@ -58,6 +58,11 @@ Inside the "Voice/Language", look for your langauge and select your prefered voi
 	3) Select a voice for a specific post: on the post edit page, inside the Speechy optional setting, you can also change the default voice using the drop down menu.
 
 == Changelog ==
+
+= 2.3 =
+* Adding counting for each played post.
+* Adding column "Speechy Stats" in the "All posts" admin screen with  the played stat for each post
+* Making "Speechy Stats" column sortable.
 
 = 2.2.6 =
 * Little bug.
