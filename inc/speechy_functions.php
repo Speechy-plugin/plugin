@@ -70,7 +70,7 @@ function speechy_get_post_column_values($column_name, $postID){
     if($column_name === 'speechy'){
 		$speechyApi = new SpeechyAPi(ID_KEY, SECRET_KEY);
 
-		$count = $speechyApi->getListenBytesForEveryPost(); 
+		$count = $speechyApi->getPostWiseStatus(); 
 		$hitCount = $count['data'][$postID]['hitCount'];
 		echo $hitCount;
 
