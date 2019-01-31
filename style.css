@@ -1,0 +1,275 @@
+.entry-content a,
+.entry-summary a,
+.widget a,
+.site-footer .widget-area a,
+.posts-navigation a,
+.widget_authors a strong {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.single .speechy_mp3,
+.page .speechy_mp3 {
+  position: relative;
+  padding: 0;
+  margin: 0 0 50px 0;
+  background: #fff;
+  border-radius: 3px;
+  width: 100% !important;
+  background-size: 100% !important;
+}
+
+.single .speechy_mp3 span,
+.page .speechy_mp3 span {
+}
+
+.single .speechy_mp3 .mejs-container,
+.page .speechy_mp3 .mejs-container {
+  margin-bottom: 0 !important;
+  width: auto !important;
+}
+
+.single .speechy_mp3 .powered_by,
+.page .speechy_mp3 .powered_by {
+  position: absolute;
+  padding: 0 40px 0 0;
+  top: 10px;
+  right: 10px;
+}
+
+.single .speechy_mp3 .powered_by img,
+.page .speechy_mp3 .powered_by img {
+  margin: 0 0 0 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 25px;
+  height: 25px;
+}
+
+.single .speechy_mp3 .powered_by img a,
+.single .speechy_mp3 .powered_by img a:hover,
+.page .speechy_mp3 .powered_by img a,
+.page .speechy_mp3 .powered_by img a:hover {
+  text-decoration: none;
+  border-bottom: 0 !important;
+}
+
+.single .speechy_mp3 .download_link,
+.page .speechy_mp3 .download_link {
+  background: url(../images/cloud.png) no-repeat left center;
+  background-size: 30px;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 5px;
+  right: 50px;
+}
+
+.single .speechy_mp3 .download_link a,
+.page .speechy_mp3 .download_link a {
+  padding: 0 10px 0 28px;
+}
+
+.single .speechy_mp3 .download_link a:hover,
+.page .speechy_mp3 .download_link a:hover {
+  text-decoration: none;
+  border-bottom: 0 !important;
+}
+
+.single .fixed_up,
+.page .fixed_up {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  width: 100%;
+  padding: 0;
+  border: 0 !important;
+}
+
+.single .fixed_wpadminbar,
+.page .fixed_wpadminbar {
+  top: 32px;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.remove {
+  display: none !important;
+}
+
+.show_player_bg_image {
+  margin: 0 0 10px 0;
+}
+
+/** Player **/
+
+/* Player background */
+.mejs-container,
+.mejs-container .mejs-controls,
+.mejs-embed,
+.mejs-embed body {
+  background: transparent !important;
+}
+
+/* Time bar */
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
+.mejs-controls .mejs-time-rail .mejs-time-loaded {
+  border-radius: 5px !important;
+}
+.mejs-controls .mejs-time-rail .mejs-time-current {
+  background: #0073aa;
+  border-radius: 5px !important;
+}
+
+/* Volume */
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total,
+.mejs-controls .mejs-time-rail span {
+  border-radius: 5px !important;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-current {
+  background: #bdeeef;
+}
+
+#speechy-player {
+  display: block;
+  width: 100%;
+}
+
+.player_image {
+  width: 100px;
+  height: 100px;
+  margin: 0 20px 0 0;
+  float: left;
+}
+
+.player_with_image {
+  float: left;
+  width: 75% !important;
+}
+
+.player_settings {
+  vertical-align: top;
+}
+
+.delete_player_logo {
+  margin: 5px 0 0 20px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Scroll title */
+.scroll-title {
+  overflow: hidden;
+  position: relative;
+  width: 80%;
+  height: 30px;
+  margin: 7px 0 10px 0;
+  color: #fff;
+}
+.scroll-title .scroll {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  line-height: 30px;
+  text-align: left;
+  /* Starting position */
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  /* Apply animation to this element */
+  -moz-animation: scroll-title 8s linear infinite;
+  -webkit-animation: scroll-title 8s linear infinite;
+  animation: scroll-title 8s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-title {
+  0% {
+    -moz-transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes scroll-title {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+@keyframes scroll-title {
+  0% {
+    -moz-transform: translateX(100%); /* Browser bug fix */
+    -webkit-transform: translateX(100%); /* Browser bug fix */
+    transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-95%); /* Browser bug fix */
+    -webkit-transform: translateX(-95%); /* Browser bug fix */
+    transform: translateX(-95%);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .single .speechy_mp3,
+  .page .speechy_mp3 {
+    padding: 5px;
+    margin: 0;
+    max-height: 150px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .single .speechy_mp3 span,
+  .page .speechy_mp3 span {
+  }
+
+  .scroll-title {
+    width: 65%;
+    margin: 0px 0 10px 0;
+  }
+
+  .single .speechy_mp3 .download_link,
+  .single .speechy_mp3 .download_link {
+    text-align: right;
+    padding: 0;
+    font-size: 0.8em;
+  }
+
+  #pricing-page-wrapper .label {
+    display: none;
+  }
+
+  .pricing {
+    border-right: 1px solid #000;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .player_with_image {
+    width: 80% !important;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .player_with_image {
+    width: 65% !important;
+  }
+}
