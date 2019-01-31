@@ -6,7 +6,8 @@ function speechy_find_mp3($content){
 	
 	$original_content = $content;
 
-	if(is_singular()){
+	//if(is_singular()){
+	if( is_single() || is_page()){
 		// Get mp3_url for this post
 		$sp_mp3 = get_post_meta( $post_id, 'mp3_url', true );
 			
