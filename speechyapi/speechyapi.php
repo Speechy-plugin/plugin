@@ -24,7 +24,7 @@ class SpeechyAPi{
 	
 	public function getSentences($content){
 		$content = str_replace(chr(0xC2).chr(0xA0), " ", $content); // if there is any \u00a0, we need to replace it with spaces because it causes 2 byte instead of 1 as space.
-		//$content =  preg_replace("/\([^)]+\)/","",$content); /* Quiting any content between square brackets. */
+		$content =  preg_replace("/\([^)]+\)/","",$content); /* Quiting any content between square brackets. */
 		
 		$arr = preg_split("/(?<!\..)([\?\!\.]+)\s(?!.\.)/",$content,-1, PREG_SPLIT_DELIM_CAPTURE); // Regex Ref. https://en.wikipedia.org/wiki/Sentence_boundary_disambiguation
 
