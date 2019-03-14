@@ -1,6 +1,6 @@
 # plugin
 
-<h2>How to use Speechy TEST</h2>
+<h2>How to use Speechy</h2>
 
 <h3>Description</h3>
 
